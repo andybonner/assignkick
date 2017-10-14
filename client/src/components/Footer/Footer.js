@@ -6,7 +6,7 @@ import "./Footer.css";
 const Footer = () =>
   <footer className="footer">
     <p className="text-center">
-    &copy; 
+    This will be the footer
     </p>
   </footer>;
 

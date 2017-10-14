@@ -2,9 +2,9 @@
 import React from "react";
 
 // Main component
-const Main = () =>
+const Home = () =>
   <div>
     "hi"
   </div>;
 
-export default Main;
+export default Home;
