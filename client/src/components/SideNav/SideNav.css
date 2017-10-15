@@ -63,7 +63,7 @@ nav.main-menu.expanded {
   position:relative;
   display:table-cell;
   width:60px;
-  height:36px;
+  height: 60px;
   text-align:center;
   vertical-align:middle;
   font-size:18px;
@@ -74,6 +74,7 @@ nav.main-menu.expanded {
   display:table-cell;
   vertical-align:middle;
   width:190px;
+  padding-left: 20px;
 }
 
 /* .main-menu>ul.logout {
