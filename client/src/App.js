@@ -1,20 +1,18 @@
 // Dependencies
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Wrapper from "./components/Wrapper";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import SideNav from "./components/SideNav";
+import Main from "./pages/Main";
+
+// Import CSS
+import "./App.css";
 
 // App component
 const App = () =>
   <Router>
     <div>
-      <SideNav />
-      <Wrapper>
-        <Route exact path="/" component={ Home } />
-      </Wrapper>
-      <Footer />
+      <Route exact path="/" component={ Home } />
+      <Route exact path="/main" component={ Main } />
     </div>
   </Router>;
 
