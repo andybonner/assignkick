@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import FullImage from "../../components/FullImage";
 import SideNav from "../../components/SideNav";
 import Footer from "../../components/Footer";
-import About from "../../components/About";
+import Struggle from "../../components/Struggle";
 import Solution from "../../components/Solution";
 
 // Import CSS
@@ -18,7 +18,7 @@ const Home = () =>
       <SideNav />
     </FullImage>
 
-    <About 
+    <Struggle 
       imageOne="assets/images/homeHeader.jpeg"
       imageTwo="assets/images/homeHeader.jpeg"
       imageThree="assets/images/homeHeader.jpeg"

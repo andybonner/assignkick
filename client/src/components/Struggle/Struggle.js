@@ -1,10 +1,10 @@
 // Dependencies
 import React from "react";
-import "./About.css";
+import "./Struggle.css";
 
-// About component
-const About = (props) =>
-  <section>
+// Struggle component
+const Struggle = (props) =>
+  <section className="about-container">
     <h3 className="about-title">{ props.header }</h3>
 
     <div className="carousel">
@@ -30,4 +30,4 @@ const About = (props) =>
     </div>
   </section>;
 
-export default About;
+export default Struggle;
