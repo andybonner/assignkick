@@ -12,7 +12,7 @@ const SideNav = () =>
                 <ul>
                     <li>
                         <Link to="/">
-                            <img className="nav-icon" src="assets/images/logo.png" />
+                            <img className="nav-icon" src="assets/images/logo.svg" />
                             <span className="nav-text">
                                 AssignKick
                             </span>
