@@ -15,8 +15,8 @@ const Home = () =>
     <FullImage 
       backgroundImage="assets/images/homeHeader.jpeg"
       captionHeader="AssignKick"
-      captionCatch="Are you a student? Having a hard time managing your time with class assignments."
-      captionText="We, at AssignKick, know your struggle. That's why we developed a open source Assignment Management Application is great for getting organized."
+      captionCatch="Are you a student? Having a hard time managing your class assignments."
+      captionText="We, at AssignKick, know your struggle. That's why we developed an open source Assignment Management Application great for getting you more organized."
     >
       <SideNav />
     </FullImage>
