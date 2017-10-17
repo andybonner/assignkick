@@ -5,3 +5,24 @@
   background-position: center;
   background-image: url("https://i.imgur.com/Sox1WFN.jpg");
 }
+
+.catch {
+  position: absolute;
+  top: 375px;
+  left: 200px;
+  background: rgba(0, 0, 0, 0.60);
+  padding: 4px 8px;
+  color: white;
+  width: 500px;
+  margin: 0;
+  height: 275px;
+}
+
+p {
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
+h2 {
+  color: white;
+}

@@ -62,11 +62,12 @@ nav.main-menu.expanded {
 .main-menu .nav-icon {
   position:relative;
   display:table-cell;
-  width:60px;
-  height: 60px;
+  width:40px;
+  height: 40px;
   text-align:center;
   vertical-align:middle;
   font-size:18px;
+  margin: 10px;
 }
 
 .main-menu .nav-text {
@@ -77,11 +78,15 @@ nav.main-menu.expanded {
   padding-left: 20px;
 }
 
-/* .main-menu>ul.logout {
+.main-menu>ul.copyright {
   position:absolute;
   left:0;
   bottom:0;
-} */
+  color: black;
+  overflow: hidden;
+  display:block;
+  width:250px;
+}
 
 .no-touch .scrollable.hover {
   overflow-y:hidden;
@@ -105,7 +110,8 @@ nav {
   user-select:none;
 }
 
-nav ul,nav li {
+nav ul,
+nav li {
   outline:0;
   margin:0;
   padding:0;
@@ -122,4 +128,9 @@ nav.main-menu li.active>a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color:#fff;
   background-color:#5fa2db;
+}
+
+.has-subnav {
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 10px;
 }
