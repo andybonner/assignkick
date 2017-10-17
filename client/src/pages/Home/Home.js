@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component } from "react";
+import React from "react";
 import FullImage from "../../components/FullImage";
 import SideNav from "../../components/SideNav";
 import Footer from "../../components/Footer";
@@ -25,12 +25,15 @@ const Home = () =>
       imageFour="assets/images/homeHeader.jpeg"
       imageFive="assets/images/homeHeader.jpeg"
       header="The Struggle:"
+      imageDesc="Cartoon"
     />
 
     <Solution
       imageOne="assets/images/homeHeader.jpeg"
       imageTwo="assets/images/homeHeader.jpeg"
       header="The Solution:"
+      imageOneDesc="App Screenshot 1"
+      imageTwoDesc="App Screenshot 2"
     />
     
     <Footer />

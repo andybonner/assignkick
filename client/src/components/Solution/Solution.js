@@ -9,11 +9,11 @@ const Solution = (props) =>
 
     <div className="row">
       <div className="col-sm-6">
-        <img src={ props.imageOne } />
+        <img src={ props.imageOne } alt={ props.imageOneDesc } />
       </div>
 
       <div className="col-sm-6">
-        <img src={ props.imageTwo } />
+        <img src={ props.imageTwo } alt={ props.imageTwoDesc } />
       </div>
     </div>
   </section>;

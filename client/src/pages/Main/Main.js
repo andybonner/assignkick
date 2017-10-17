@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component } from "react";
+import React from "react";
 import SideNav from "../../components/SideNav";
 import Footer from "../../components/Footer";
 

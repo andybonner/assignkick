@@ -9,23 +9,23 @@ const Struggle = (props) =>
 
     <div className="carousel">
       <a className="carousel-item" href="#one!">
-        <img src={ props.imageOne } />
+        <img src={ props.imageOne } alt={ props.imageDesc } />
       </a>
 
       <a className="carousel-item" href="#two!">
-        <img src={ props.imageTwo } />
+        <img src={ props.imageTwo } alt={ props.imageDesc } />
       </a>
 
       <a className="carousel-item" href="#three!">
-        <img src={ props.imageThree } />
+        <img src={ props.imageThree } alt={ props.imageDesc } />
       </a>
 
       <a className="carousel-item" href="#four!">
-        <img src={ props.imageFour } />
+        <img src={ props.imageFour } alt={ props.imageDesc } />
       </a>
 
       <a className="carousel-item" href="#five!">
-        <img src={ props.imageFive } />
+        <img src={ props.imageFive } alt={ props.imageDesc } />
       </a>
     </div>
   </section>;
