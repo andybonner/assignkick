@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+client_id.json
+client_secret.json
+
 # Runtime data
 pids
 *.pid
