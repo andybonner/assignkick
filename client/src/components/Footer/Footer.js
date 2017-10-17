@@ -9,7 +9,7 @@ const Footer = () =>
       <div className="col-sm-3">
         <p className="site-map">Site Map</p>
         <p><a href="/">Home</a></p>
-        <p><a href="/about">About</a></p>
+        <p><a href="/main">About</a></p>
       </div>
 
       <div className="col-sm-3">

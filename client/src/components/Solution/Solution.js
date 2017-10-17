@@ -3,7 +3,7 @@ import React from "react";
 import "./Solution.css";
 
 // Solution component
-const Solution = (props) =>
+const Solution = props =>
   <section className="solution-container">
     <h3 className="solution-title">{ props.header }</h3>
 

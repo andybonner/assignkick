@@ -3,7 +3,7 @@ import React from "react";
 import "./Struggle.css";
 
 // Struggle component
-const Struggle = (props) =>
+const Struggle = props =>
   <section className="about-container">
     <h3 className="about-title">{ props.header }</h3>
 
