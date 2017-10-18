@@ -23,8 +23,8 @@ const Home = () =>
 
     <Struggle 
       imageOne="assets/images/homeHeader.jpeg"
-      imageTwo="assets/images/homeHeader.jpeg"
-      imageThree="assets/images/homeHeader.jpeg"
+      imageTwo="assets/images/2nd.png"
+      imageThree="assets/images/3rd.png"
       imageFour="assets/images/homeHeader.jpeg"
       imageFive="assets/images/homeHeader.jpeg"
       header="The Struggle:"
