@@ -11,11 +11,11 @@ const Struggle = props =>
     <Carousel
       options={{ duration: 1 }}
       images={[
-        'assets/images/homeHeader.jpeg',
+        'assets/images/3rd.png',
         'assets/images/2nd.png',
         'assets/images/3rd.png',
-        'assets/images/homeHeader.jpeg',
-        'assets/images/homeHeader.jpeg'
+        'assets/images/3rd.png',
+        'assets/images/3rd.png'
       ]} 
       />
   </section>;
