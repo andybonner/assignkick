@@ -26,20 +26,10 @@ class Home extends Component {
       <SideNav />
     </FullImage>
 
-<<<<<<< HEAD
     <Struggle
-=======
-    <Struggle 
-      imageOne="assets/images/homeHeader.jpeg"
-      imageTwo="assets/images/2nd.png"
-      imageThree="assets/images/3rd.png"
-      imageFour="assets/images/homeHeader.jpeg"
-      imageFive="assets/images/homeHeader.jpeg"
->>>>>>> ecda6781af1a9764fb729aa678b1cb79d2680390
       header="The Struggle:"
       imageDesc="Cartoon"
     >
-
     </Struggle>
 
     <Solution
