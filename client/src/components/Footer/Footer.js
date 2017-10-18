@@ -1,6 +1,7 @@
 // Dependencies
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 // Footer component
 const Footer = () =>
@@ -8,8 +9,8 @@ const Footer = () =>
     <div className="row row-container">
       <div className="col-sm-3">
         <p className="site-map">Site Map</p>
-        <p><a href="/">Home</a></p>
-        <p><a href="/main">About</a></p>
+        <p><Link to="/">Home</Link></p>
+        <p><Link to="/main">About</Link></p>
       </div>
 
       <div className="col-sm-3">
