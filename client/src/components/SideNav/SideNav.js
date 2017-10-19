@@ -4,11 +4,12 @@ import "./SideNav.css";
 import SignupModal from "../../components/SignupModal";
 import SigninModal from "../../components/SigninModal"
 import SidebarFooter from "../../components/SidebarFooter";
+import { Button, Icon, Modal } from 'react-materialize'
 
 // SideNav component
 const SideNav = () =>
-    <div>
-        <div>
+    <section>
+        <section>
             <nav className="main-menu">
                 <ul>
                     <li>
@@ -29,31 +30,40 @@ const SideNav = () =>
                         </a>
                     </li>
 
+
+                <Modal
+                  actions={[]}
+                  trigger={
                     <li className="has-subnav">
-                        <a className="modal-trigger" href="#signup">
-                            <i className="fa fa-laptop fa-2x"></i>
-                            <span className="nav-text">
-                                Sign Up
-                            </span>
-                        </a> 
+                      <a className="modal-trigger" href="#signup">
+                        <i className="fa fa-laptop fa-2x"></i>
+                        <span className="nav-text">
+                            Sign Up
+                        </span>
+                      </a> 
                     </li>
+                  }
+                >
+                    <SignupModal 
+                      id="signup"
+                      modelHeader="Sign Up Form"
+                      submitBtnTxt="Submit"
+                      cancelBtnTxt="Cancel"
+                      formId="signupForm"
+                      modalHeight="60%"
+                      modalPadding="20px"
+                    />
+                </Modal>
+
                 </ul>
 
                 <SidebarFooter
                   footerText="&copy; 2017 AssignKick"
                 />
             </nav>
-        </div>
-    
-        <SignupModal 
-          id="signup"
-          modelHeader="Sign Up Form"
-          submitBtnTxt="Submit"
-          cancelBtnTxt="Cancel"
-          formId="signupForm"
-          modalHeight="60%"
-          modalPadding="20px"
-        />
+        </section>
+
+
 
         <SigninModal 
           id="signin"
@@ -64,6 +74,7 @@ const SideNav = () =>
           modalHeight="35%"
           modalPadding="20px"
         />
-    </div>;
+
+    </section>;
 
 export default SideNav;

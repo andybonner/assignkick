@@ -5,43 +5,47 @@ import SideNav from "../../components/SideNav";
 import Footer from "../../components/Footer";
 import Struggle from "../../components/Struggle";
 import Solution from "../../components/Solution";
-import {Carousel} from 'react-materialize';
 
 // Import CSS
 import "./Home.css";
 
 // Home component
 class Home extends Component {
-  
-  
   render() {
     return(
-  <section className="home-container">
-    <FullImage 
-      backgroundImage="assets/images/homeHeader.jpeg"
-      captionHeader="AssignKick"
-      captionCatch="Are you a student? Having a hard time managing your class assignments."
-      captionText="We, at AssignKick, know your struggle. That's why we developed an open source Assignment Management Application great for getting you more organized."
-    >
-      <SideNav />
-    </FullImage>
+      <section className="home-container">
+        <FullImage 
+          backgroundImage="assets/images/homeHeader.jpeg"
+          captionHeader="AssignKick"
+          captionCatch="Are you a student? Having a hard time managing your class assignments."
+          captionText="We, at AssignKick, know your struggle. That's why we developed an open source Assignment Management Application great for getting you more organized."
+        >
+          <SideNav />
+        </FullImage>
 
-    <Struggle
-      header="The Struggle:"
-      imageDesc="Cartoon"
-    >
-    </Struggle>
+        <Struggle
+          header="The Struggle:"
+          imageDesc="Cartoon"
+          firstImage="assets/images/3rd.png"
+          secondImage="assets/images/2nd.png"
+          thirdImage="assets/images/3rd.png"
+          fourthImage="assets/images/3rd.png"
+          fifthImage="assets/images/3rd.png"
+          className="cartoons"
+          struggleInfo="We are all too aware of the stuggle. It happens to the best of us."
+        >
+        </Struggle>
 
-    <Solution
-      imageOne="assets/images/homeHeader.jpeg"
-      imageTwo="assets/images/homeHeader.jpeg"
-      header="The Solution:"
-      imageOneDesc="App Screenshot 1"
-      imageTwoDesc="App Screenshot 2"
-    />
-    
-    <Footer />
-  </section>
+        <Solution
+          imageOne="assets/images/homeHeader.jpeg"
+          imageTwo="assets/images/homeHeader.jpeg"
+          header="The Solution:"
+          imageOneDesc="App Screenshot 1"
+          imageTwoDesc="App Screenshot 2"
+        />
+        
+        <Footer />
+      </section>
     )}
 }
 

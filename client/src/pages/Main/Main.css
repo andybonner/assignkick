@@ -1,0 +1,15 @@
+.mainContainer {
+  margin-left: 120px;
+  margin-right: 100px;
+}
+
+footer {
+  border-top: 1px solid lightgray;
+  padding-top: 40px;
+  margin-bottom: 40px;
+  padding-left: 70px;
+}
+
+.site-map {
+  font-size: 18px;
+}

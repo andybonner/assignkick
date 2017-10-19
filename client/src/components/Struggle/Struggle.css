@@ -1,15 +1,4 @@
-.carousel .carousel-item {
-  max-width: 400px;
-  width: 100%;
-}
-
-.carousel {
-  height: 1100px;
-  margin-left: auto;
-  margin-right: 60px;
-  margin-top: -400px;
-  margin-bottom: -100px;
-}
+@import '~antd/dist/antd.css';
 
 .about-title {
   margin-left: 60px;
@@ -17,6 +6,47 @@
   margin-top: 30px;
 }
 
-.about-container {
+.struggleContainer {
   margin-left: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.site-map {
+  font-size: 18px !important;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 400px !important;
+  line-height: 160px;
+  background: #fff !important;
+  overflow: hidden;
+  color: black;
+}
+
+  .ant-carousel .slick-slide h3 {
+    color: black;
+  }
+
+  .ant-carousel .slick-dots {
+    height: auto !important;
+    color: #000 !important;
+  }
+
+    .ant-carousel .slick-dots li button {
+      width: 30px !important;
+      background-color: black !important;
+    }
+
+.cartoons {
+  height: 350px;
+  display: block;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.struggleInfo {
+  font-size: 17px;
+  margin-bottom: 22px;
 }

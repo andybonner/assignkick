@@ -11,7 +11,7 @@ const SignupModal = props => {
   };
 
   return(
-    <section id={ props.id } className="modal modal-fixed-footer" style={ modalStyle }>
+    <section id={ props.id } style={ modalStyle }>
 
       <section >
         <h4 className="text-center" style={{ marginBottom: "30px" }}>{ props.modelHeader }</h4>
