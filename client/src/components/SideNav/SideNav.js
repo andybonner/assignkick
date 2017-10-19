@@ -1,80 +1,125 @@
 // Dependencies
-import React from "react";
-import "./SideNav.css";
-import SignupModal from "../../components/SignupModal";
-import SigninModal from "../../components/SigninModal"
+import React, { Component } from "react";
 import SidebarFooter from "../../components/SidebarFooter";
-import { Button, Icon, Modal } from 'react-materialize'
+import { Modal } from "antd";
+import { Link } from "react-router-dom";
+import RegForm from "../../components/Forms/RegForm";
+import LoginForm from "../../components/Forms/LoginForm";
+
+// Import CSS
+import "./SideNav.css";
 
 // SideNav component
-const SideNav = () =>
-    <section>
-        <section>
-            <nav className="main-menu">
-                <ul>
-                    <li>
-                        <a href="/">
-                            <img className="nav-icon" src="assets/images/logo.svg" alt="logo" />
-                            <span className="nav-text">
-                                AssignKick
-                            </span>
-                        </a>
-                    </li>
+class SideNav extends Component {
+  state = {
+    loading: false,
+		regVisible: false,
+		loginVisible: false
+	}
+	
+  showRegModal = () => {
+    this.setState({
+      regVisible: true,
+    });
+	}
 
-                    <li className="has-subnav">
-                        <a href="#signin" className="modal-trigger">
-                            <i className="fa fa-laptop fa-2x"></i>
-                            <span className="nav-text">
-                                Sign In
-                            </span>
-                        </a>
-                    </li>
+	showLoginModal = () => {
+    this.setState({
+      loginVisible: true,
+    });
+	}
+	
+  handleOk = () => {
+		this.setState({ 
+			loading: true 
+		});
+		
+    setTimeout(() => {
+      this.setState({ 
+				loading: false, 
+				regVisible: false 
+			});
+    }, 3000);
+	}
+	
+  handleCancel = () => {
+    this.setState({ 
+			regVisible: false, 
+			loginVisible: false 
+		});
+	}
+	
+	render() {
+		const { regVisible, loginVisible, loading } = this.state;
 
+		return(
+			<div>
+				<div>
+					<nav className="main-menu">
+						<ul>
+							<li>
+								<Link to="/">
+									<img className="nav-icon" src="assets/images/logo.svg" alt="logo" />
+									<span className="nav-text">
+											AssignKick
+									</span>
+								</Link>
+							</li>
 
-                <Modal
-                  actions={[]}
-                  trigger={
-                    <li className="has-subnav">
-                      <a className="modal-trigger" href="#signup">
-                        <i className="fa fa-laptop fa-2x"></i>
-                        <span className="nav-text">
-                            Sign Up
-                        </span>
-                      </a> 
-                    </li>
-                  }
-                >
-                    <SignupModal 
-                      id="signup"
-                      modelHeader="Sign Up Form"
-                      submitBtnTxt="Submit"
-                      cancelBtnTxt="Cancel"
-                      formId="signupForm"
-                      modalHeight="60%"
-                      modalPadding="20px"
-                    />
-                </Modal>
+							{/* Register Modal/Button */}
+							<li className="has-subnav">
+								<a href="#signin" onClick={this.showRegModal}>
+									<i className="fa fa-laptop fa-2x"></i>
+									<span className="nav-text">
+											Register
+									</span>
+								</a>
 
-                </ul>
+								<Modal
+									visible={ regVisible }
+									title="Register Form"
+									onCancel={this.handleCancel}
+									footer={null}
+								>
+									<RegForm
+										regClass="formItems"
+										inputClass="inputItems"
+									/>
+								</Modal>
+							</li>
 
-                <SidebarFooter
-                  footerText="&copy; 2017 AssignKick"
-                />
-            </nav>
-        </section>
+							{/* Login Modal/Button */}
+							<li className="has-subnav">
+								<a href="#signin" onClick={this.showLoginModal}>
+										<i className="fa fa-laptop fa-2x"></i>
+										<span className="nav-text">
+												Login
+										</span>
+								</a>
+								
+								<Modal
+									visible={ loginVisible }
+									title="Login Form"
+									onCancel={this.handleCancel}
+									footer={null}
+									className="text-center"
+								>
+									<LoginForm
+										regClass="formItems"
+										inputClass="inputItems"
+									/>
+								</Modal>
+							</li>
+						</ul>
 
-
-
-        <SigninModal 
-          id="signin"
-          modelHeader="Sign In Form"
-          submitBtnTxt="Submit"
-          cancelBtnTxt="Cancel"
-          formId="signinForm"
-          modalHeight="35%"
-          modalPadding="20px"
-        />
-
-    </section>;
+						<SidebarFooter
+							footerText="&copy; 2017 AssignKick"
+						/>
+					</nav>
+				</div>
+			</div>
+		)
+	}
+}
 
 export default SideNav;

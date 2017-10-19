@@ -1,0 +1,17 @@
+@import '~/antd/dist/antd.css';
+
+.login-form-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.login-form {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  width: 450px;
+}
+
+.loginInput .ant-input {
+  font-size: 12px !important;
+  margin-left: 50px;
+}
