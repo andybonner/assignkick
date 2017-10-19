@@ -1,19 +1,22 @@
 
-
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3001;
 var fs = require('fs');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var open = require('open');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
+  process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 
 // Load client secrets from a local file.
-fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+fs.readFile('client_id.json', function processClientSecrets(err, content) {
   if (err) {
     console.log('Error loading client secret file: ' + err);
     return;
@@ -31,14 +34,14 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
  * @param {function} callback The callback to call with the authorized client.
  */
 function authorize(credentials, callback) {
-  var clientSecret = credentials.installed.client_secret;
-  var clientId = credentials.installed.client_id;
-  var redirectUrl = credentials.installed.redirect_uris[0];
+  var clientSecret = credentials.web.client_secret;
+  var clientId = credentials.web.client_id;
+  var redirectUrl = credentials.web.redirect_uris[0];
   var auth = new googleAuth();
   var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function(err, token) {
+  fs.readFile(TOKEN_PATH, function (err, token) {
     if (err) {
       getNewToken(oauth2Client, callback);
     } else {
@@ -57,28 +60,35 @@ function authorize(credentials, callback) {
  *     client.
  */
 function getNewToken(oauth2Client, callback) {
+  console.log("getNewToken called");
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES
   });
-  console.log('Authorize this app by visiting this url: ', authUrl);
-  var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+
+  open(authUrl, function (err) {
+    if (err) throw err;
   });
-  rl.question('Enter the code from that page here: ', function(code) {
-    rl.close();
-    oauth2Client.getToken(code, function(err, token) {
-      if (err) {
-        console.log('Error while trying to retrieve access token', err);
-        return;
-      }
-      oauth2Client.credentials = token;
-      storeToken(token);
-      callback(oauth2Client);
-    });
-  });
+
 }
+
+app.get('/foo', function(req,res) {
+  res.send('bar');
+})
+
+app.get('/authenticated', function (req, res) {
+  var code = req.query.code;
+  console.log("code:", code);
+  oauth2Client.getToken(code, function (err, token) {
+    if (err) {
+      console.log('Error while trying to retrieve access token', err);
+      return;
+    }
+    oauth2Client.credentials = token;
+    storeToken(token);
+    callback(oauth2Client);
+  });
+});
 
 /**
  * Store token to disk be used in later program executions.
@@ -111,14 +121,14 @@ function listEvents(auth) {
     maxResults: 10,
     singleEvents: true,
     orderBy: 'startTime'
-  }, function(err, response) {
+  }, function (err, response) {
     if (err) {
       console.log('The API returned an error: ' + err);
       return;
     }
     // Here's the full response object:
     console.log('Response:', response);
-    
+
     var events = response.items;
     if (events.length == 0) {
       console.log('No upcoming events found.');
@@ -132,3 +142,8 @@ function listEvents(auth) {
     }
   });
 }
+
+// Start the API server
+app.listen(PORT, function () {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
