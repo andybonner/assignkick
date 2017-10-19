@@ -52,9 +52,7 @@ class RegistrationForm extends Component {
     callback();
   }
 
-  handleReset = () => {
-    this.props.form.resetFields();
-  }
+  handleReset = () => this.props.form.resetFields();
 
   render() {
     const { getFieldDecorator } = this.props.form;

@@ -21,6 +21,8 @@ class CustomLoginForm extends Component {
     // Resets fields in modal
     this.props.form.resetFields();
   }
+
+  handleReset = () => this.props.form.resetFields();
   
   render() {
     const { getFieldDecorator } = this.props.form;
