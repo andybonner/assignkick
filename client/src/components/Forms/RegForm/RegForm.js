@@ -19,6 +19,7 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
+        // make axios POST call to /auth/register
       }
     });
 
@@ -94,7 +95,7 @@ class RegistrationForm extends Component {
           className={ this.props.regClass }
         >
           {getFieldDecorator('firstName', {
-            rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
           })(
             <Input className={ this.props.inputClass } />
           )}
