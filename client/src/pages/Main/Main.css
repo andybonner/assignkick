@@ -13,3 +13,16 @@ footer {
 .site-map {
   font-size: 18px;
 }
+
+.left-section {
+margin-left: 120px;
+ margin-right: 100px;
+border: 2px;
+border-color: black;
+width: 45%;
+height: 350px;
+overflow: scroll;
+}
+.course-title {
+	position: initial;
+}

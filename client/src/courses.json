@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "grade": 8,
+    "course": "Algebra",
+    "teacher": "Tikcs",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 2,
+    "grade": 8,
+    "course": "Algebra",
+    "teacher": "Oeckenach",
+    "school": "Furbur Middle School"
+  },
+  {
+    "id": 3,
+    "grade": 8,
+    "course": "Algebra",
+    "teacher": "Calico",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 4,
+    "grade": 8,
+    "course": "Algebra",
+    "teacher": "Feeney",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 5,
+    "grade": 8,
+    "course": "Algebra",
+    "teacher": "Feeney",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 6,
+    "grade": 8,
+    "course": "Concert Band",
+    "teacher": "Ricks",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 7,
+    "grade": 8,
+    "course": "PE",
+    "teacher": "Rooney",
+    "school": "WJH Middle School"
+  },
+  {
+    "id": 8,
+    "grade": 6,
+    "course": "Geometry",
+    "teacher": "Feeney",
+    "school": "Atopic Middle School"
+  },
+  {
+    "id": 9,
+    "grade": 8,
+    "course": "Literature",
+    "teacher": "Feeney",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 10,
+    "grade": 8,
+    "course": "Social Studies",
+    "teacher": "Feeney",
+    "school": "Chaloner Middle School"
+  },
+  {
+    "id": 11,
+    "grade": 8,
+    "course": "History",
+    "teacher": "Feeney",
+    "school": "Alton Middle School"
+  },
+  {
+    "id": 12,
+    "grade": 8,
+    "course": "Science",
+    "teacher": "Feeney",
+    "school": "Greene Middle School"
+  }
+]
