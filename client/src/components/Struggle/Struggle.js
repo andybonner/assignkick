@@ -24,19 +24,19 @@ class Struggle extends Component {
           {...setting}
         >
           <div>
-            <img src={ this.props.firstImage } className={ this.props.className } />
+            <img src={ this.props.firstImage } className={ this.props.className } alt={ this.props.firstImage } />
           </div>
           <div>
-            <img src={ this.props.secondImage } className={ this.props.className } />
+            <img src={ this.props.secondImage } className={ this.props.className } alt={ this.props.secondImage } />
           </div>
           <div>
-            <img src={ this.props.thirdImage } className={ this.props.className } />
+            <img src={ this.props.thirdImage } className={ this.props.className } alt={ this.props.thirdImage } />
           </div>
           <div>
-            <img src={ this.props.fourthImage } className={ this.props.className } />
+            <img src={ this.props.fourthImage } className={ this.props.className } alt={ this.props.fourthImage } />
           </div>
           <div>
-            <img src={ this.props.fifthImage } className={ this.props.className } />
+            <img src={ this.props.fifthImage } className={ this.props.className } alt={ this.props.fifthImage } />
           </div>
         </Carousel>
 

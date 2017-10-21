@@ -12,7 +12,6 @@ import "./SideNav.css";
 // SideNav component
 class SideNav extends Component {
   state = {
-    loading: false,
 		regVisible: false,
 		loginVisible: false
 	}
@@ -50,7 +49,7 @@ class SideNav extends Component {
 	}
 	
 	render() {
-		const { regVisible, loginVisible, loading } = this.state;
+		const { regVisible, loginVisible } = this.state;
 
 		return(
 			<div>
