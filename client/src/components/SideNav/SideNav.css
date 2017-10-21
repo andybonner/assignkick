@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Register";
+  src: url("../../assets/fonts/register.ttf") format("truetype");
+}
+
 .fa-2x {
   font-size: 2em;
 }
@@ -18,10 +23,17 @@ nav.main-menu.expanded {
   overflow:visible;
 }
 
+.icon-text {
+  font-family: "Register";
+  font-size: 2em;
+  margin-left: 15px;
+}
+
 .main-menu {
   background:#fbfbfb;
   border-right:1px solid #e5e5e5;
   position:fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   top:0;
   bottom:0;
   height:100%;
