@@ -26,11 +26,11 @@ class Home extends Component {
         <Struggle
           header="The Struggle:"
           imageDesc="Cartoon"
-          firstImage="assets/images/3rd.png"
-          secondImage="assets/images/2nd.png"
-          thirdImage="assets/images/3rd.png"
+          firstImage="assets/images/slide_logo.png"
+          secondImage="assets/images/kids.png"
+          thirdImage="assets/images/2nd.png"
           fourthImage="assets/images/3rd.png"
-          fifthImage="assets/images/3rd.png"
+          fifthImage="assets/images/AsKi_screen.png"
           className="cartoons"
           struggleInfo="We are all too aware of the stuggle. It happens to the best of us."
         >

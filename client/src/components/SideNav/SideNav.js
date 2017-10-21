@@ -68,8 +68,8 @@ class SideNav extends Component {
 
 							{/* Register Modal/Button */}
 							<li className="has-subnav">
-								<a href="#signin" onClick={this.showRegModal}>
-									<i className="fa fa-laptop fa-2x"></i>
+								<a href="#signin" onClick={ this.showRegModal }>
+									<span className="icon-text">R</span>
 									<span className="nav-text">
 											Register
 									</span>
@@ -78,7 +78,7 @@ class SideNav extends Component {
 								<Modal
 									visible={ regVisible }
 									title="Register Form"
-									onCancel={this.handleCancel}
+									onCancel={ this.handleCancel }
 									footer={null}
 								>
 									<RegForm
@@ -90,8 +90,8 @@ class SideNav extends Component {
 
 							{/* Login Modal/Button */}
 							<li className="has-subnav">
-								<a href="#signin" onClick={this.showLoginModal}>
-										<i className="fa fa-laptop fa-2x"></i>
+								<a href="#signin" onClick={ this.showLoginModal }>
+										<span className="icon-text">S</span>
 										<span className="nav-text">
 												Login
 										</span>

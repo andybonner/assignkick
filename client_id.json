@@ -1,0 +1,13 @@
+{
+  "web": {
+    "client_id": "151121574069-01r728b6dkl97333ag4s6d2b4s8eeb7o.apps.googleusercontent.com",
+    "project_id": "assignkick-183201",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://accounts.google.com/o/oauth2/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "JambPeS0pXwP38vWTX9h8hOt",
+    "redirect_uris": [
+      "localhost:3001/authenticated"
+    ]
+  }
+}

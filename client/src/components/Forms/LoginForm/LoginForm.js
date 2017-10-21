@@ -37,26 +37,29 @@ class CustomLoginForm extends Component {
     };
 
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        {/* Username */}
-        <FormItem
-          {...formItemLayout}
-        >
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+      <Form onSubmit={ this.handleSubmit}  className="login-form">
+        {/* Email */}
+        <FormItem {...formItemLayout} >
+          {getFieldDecorator('email', {
+            rules: [{ 
+              type: 'email', message: 'Please input a valid E-mail!' 
+            },{
+              required: true, message: "Please input your E-mail!"
+            }],
           })(
-            <Input prefix={<Icon type="user" style={{ fontSize: 15 }} />} placeholder="Username" className="loginInput" />
+            <Input 
+              prefix={ <Icon type="user" style={{ fontSize: 15 }} /> } placeholder="Email" 
+              className="loginInput" 
+            />
           )}
         </FormItem>
 
         {/* Password */}
-        <FormItem
-          {...formItemLayout}
-        >
+        <FormItem {...formItemLayout} >
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
-            <Input prefix={<Icon type="lock" style={{ fontSize: 15}} />} type="password" placeholder="Password" className="loginInput" />
+            <Input prefix={ <Icon type="lock" style={{ fontSize: 15}} /> } type="password" placeholder="Password" className="loginInput" />
           )}
         </FormItem>
 
@@ -66,7 +69,7 @@ class CustomLoginForm extends Component {
             Log in
           </Button>
 
-          <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
+          <Button style={{ marginLeft: 8 }} onClick={ this.handleReset }>
               Clear
           </Button>
           
