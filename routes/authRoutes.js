@@ -4,8 +4,10 @@ const router = require('express').Router();
 
 module.exports = function (app) {
   
-  router.route('/auth/register')
+  // NB '/auth' portion of route is already being passed in, so this equals 'auth/register'
+  router.route('/register')
   .post(function(req, res) {
+    console.log('route received as req.body:', req.body);
     User.register(new User({
       email : req.body.email,
       firstName: req.body.firstName,
@@ -22,19 +24,26 @@ module.exports = function (app) {
     });
   });
   
-  // app.get('/auth/login', function(req, res) {
+  // app.get('/login', function(req, res) {
   //   res.render('login', { user : req.user });
   // });
   
-  router.route('/auth/login')
+  router.route('/login')
   .post(function(req, res) {
     res.redirect('/main');
   })
   
-  router.route('/auth/logout')
+  router.route('/logout')
   .get(function(req, res) {
     req.logout();
     res.redirect('/');
   });
+
+  router.route('/ping')
+  .get(function(req, res) {
+    console.log('pong!');
+    res.status(200).send('pong');
+  })
+
   
 };

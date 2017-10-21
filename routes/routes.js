@@ -8,6 +8,12 @@ const authRoutes = require('./authRoutes');
 // Auth routes
 router.use('/auth', authRoutes);
 
+// test
+router.route('/foo')
+.get(function(req, res, next) {
+  res.status(200).send('bar');
+})
+
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
