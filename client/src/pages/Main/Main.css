@@ -16,11 +16,11 @@ footer {
 }
 
 .left-section {
-  margin-left: 120px;
-  margin-right: 100px;
+  margin-left: 80px;
+  margin-right: auto;
   border: 2px;
   border-color: black;
-  width: 45%;
+  width: 40%;
   height: 350px;
   overflow: scroll;
   margin-bottom: 30px;

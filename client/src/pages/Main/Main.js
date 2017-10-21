@@ -36,7 +36,9 @@ class Main extends Component {
           <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
           <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} /> 
         </div>
-          
+         
+        <div className="row"> 
+          {/* Courses */}
           <div className="left-section">
             <h1 className="course-title">Courses</h1>
             {
@@ -52,6 +54,24 @@ class Main extends Component {
               ))
             }
           </div>
+
+          {/* Assignments */}
+          <div className="left-section">
+            <h1 className="course-title">Assignments</h1>
+            {
+              courses.map(item =>(
+              <ClassSection
+                id={item.id}
+                school={item.school}
+                grade={item.grade}
+                teacher={item.teacher}
+                course={item.course}
+                key={item.id}
+              />
+              ))
+            }
+          </div>
+        </div>
         <Footer />
       </div>
     );
