@@ -19,10 +19,12 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
+
+        // ENTER CODE TO SEND TO DB WITH USER INFORMATION
+
+        this.props.form.resetFields();
       }
     });
-
-    this.props.form.resetFields();
   }
 
   handleConfirmBlur = event => {
@@ -84,7 +86,7 @@ class RegistrationForm extends Component {
     };
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={ this.handleSubmit }>
 
         {/* First Name */}
         <FormItem
@@ -94,9 +96,9 @@ class RegistrationForm extends Component {
           className={ this.props.regClass }
         >
           {getFieldDecorator('firstName', {
-            rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
           })(
-            <Input className={ this.props.inputClass } />
+            <Input className={ this.props.inputClass } placeholder="John" />
           )}
         </FormItem>
 
@@ -110,7 +112,7 @@ class RegistrationForm extends Component {
           {getFieldDecorator('lastName', {
             rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
           })(
-            <Input className={ this.props.inputClass } />
+            <Input className={ this.props.inputClass } placeholder="Smith" />
           )}
         </FormItem>
 
@@ -131,7 +133,7 @@ class RegistrationForm extends Component {
           {getFieldDecorator('nickname', {
             rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
           })(
-            <Input className={ this.props.inputClass } />
+            <Input className={ this.props.inputClass } placeholder="Johnny" />
           )}
         </FormItem>
 
@@ -149,7 +151,7 @@ class RegistrationForm extends Component {
               required: true, message: 'Please input your E-mail!',
             }],
           })(
-            <Input className={ this.props.inputClass } />
+            <Input className={ this.props.inputClass } placeholder="abc@123.com" />
           )}
         </FormItem>
 
@@ -167,7 +169,7 @@ class RegistrationForm extends Component {
               validator: this.checkConfirm,
             }],
           })(
-            <Input type="password" className={ this.props.inputClass } />
+            <Input type="password" className={ this.props.inputClass } placeholder="Secret" />
           )}
         </FormItem>
 
@@ -185,7 +187,7 @@ class RegistrationForm extends Component {
               validator: this.checkPassword,
             }],
           })(
-            <Input type="password" onBlur={this.handleConfirmBlur} className={ this.props.inputClass } />
+            <Input type="password" onBlur={ this.handleConfirmBlur } className={ this.props.inputClass } placeholder="Secret" />
           )}
         </FormItem>
 

@@ -12,7 +12,7 @@
   left: 200px;
   background: rgba(0, 0, 0, 0.60);
   padding: 4px 8px;
-  color: white;
+  color: white !important;
   width: 500px;
   margin: 0;
   height: 280px;
@@ -25,4 +25,15 @@ p {
 
 h2 {
   color: white;
+}
+
+.caption-header {
+  color: #FFF;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.caption-text {
+  padding-left: 20px;
+  padding-right: 25px;
 }
