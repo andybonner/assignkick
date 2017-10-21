@@ -34,7 +34,7 @@ class Main extends Component {
 
         <div className="mainContainer">
           <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
-          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} /> 
+          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} /> 
         </div>
           
           <div className="left-section">

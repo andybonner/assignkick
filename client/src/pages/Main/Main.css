@@ -1,6 +1,7 @@
 .mainContainer {
   margin-left: 120px;
   margin-right: 100px;
+  margin-bottom: 30px;
 }
 
 footer {
@@ -15,14 +16,16 @@ footer {
 }
 
 .left-section {
-margin-left: 120px;
- margin-right: 100px;
-border: 2px;
-border-color: black;
-width: 45%;
-height: 350px;
-overflow: scroll;
+  margin-left: 120px;
+  margin-right: 100px;
+  border: 2px;
+  border-color: black;
+  width: 45%;
+  height: 350px;
+  overflow: scroll;
+  margin-bottom: 30px;
 }
+
 .course-title {
 	position: initial;
 }

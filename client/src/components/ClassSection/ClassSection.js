@@ -6,7 +6,7 @@ const ClassSection = props => (
   
   <div className="card">
   
-  <div class="card-block">
+  <div className="card-block">
    
 
  
