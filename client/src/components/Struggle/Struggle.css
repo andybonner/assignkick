@@ -1,9 +1,21 @@
 @import '~antd/dist/antd.css';
 
+@font-face {
+  font-family: "Register";
+  src: url("../../assets/fonts/register.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  src: url("../../assets/fonts/dosis.ttf") format("truetype");
+}
+
 .about-title {
   margin-left: 60px;
   margin-bottom: 30px;
   margin-top: 30px;
+  font-family: "Register";
+  font-weight: bold;
 }
 
 .struggleContainer {
@@ -47,6 +59,7 @@
 }
 
 .struggleInfo {
-  font-size: 17px;
+  font-size: 22px;
   margin-bottom: 22px;
+  font-family: "Dosis";
 }

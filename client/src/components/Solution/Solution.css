@@ -1,7 +1,19 @@
+@font-face {
+  font-family: "Register";
+  src: url("../../assets/fonts/register.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  src: url("../../assets/fonts/dosis.ttf") format("truetype");
+}
+
 .solution-title {
   margin-left: 60px;
   margin-bottom: 30px;
   margin-top: 30px;
+  font-family: "Register";
+  font-weight: bold;
 }
 
 .solution-container {

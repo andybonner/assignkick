@@ -38,20 +38,19 @@ class Main extends Component {
         </div>
           
           <div className="left-section">
-          <h1 className="course-title">Courses</h1>
-          {
-            
-            courses.map(item =>(
-            <ClassSection
-              id={item.id}
-              school={item.school}
-              grade={item.grade}
-              teacher={item.teacher}
-              course={item.course}
-              key={item.id}
-            />
-            ))
-          }
+            <h1 className="course-title">Courses</h1>
+            {
+              courses.map(item =>(
+              <ClassSection
+                id={item.id}
+                school={item.school}
+                grade={item.grade}
+                teacher={item.teacher}
+                course={item.course}
+                key={item.id}
+              />
+              ))
+            }
           </div>
         <Footer />
       </div>
