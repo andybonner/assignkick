@@ -91,7 +91,7 @@ class SideNav extends Component {
 							{/* Login Modal/Button */}
 							<li className="has-subnav">
 								<a href="#signin" onClick={ this.showLoginModal }>
-										<span className="icon-text">S</span>
+										<span className="icon-text">L</span>
 										<span className="nav-text">
 												Login
 										</span>
