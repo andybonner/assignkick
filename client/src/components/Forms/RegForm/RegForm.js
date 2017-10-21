@@ -20,7 +20,10 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-        axios.post('/auth/register', values);
+        axios.post('/auth/register', values)
+        .then(results => {
+          console.log(results);
+        });
       }
     });
 

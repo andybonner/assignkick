@@ -2,9 +2,9 @@ const passport = require('passport');
 const User = require('../models/user');
 const router = require('express').Router();
 
-module.exports = function (app) {
+module.exports = function () {
   
-  // NB '/auth' portion of route is already being passed in, so this equals 'auth/register'
+  // NB '/auth' portion of route is already being passed in, so this equals '/auth/register'
   router.route('/register')
   .post(function(req, res) {
     console.log('route received as req.body:', req.body);
@@ -15,7 +15,8 @@ module.exports = function (app) {
       nickname: req.body.nickname
     }), req.body.password, function(err, user) {
       if (err) {
-        return res.redirect('/auth/register', { user : user });
+        // return res.redirect('/auth/register', { user : user });
+        return res.json({user: user})
       }
       
       passport.authenticate('local')(req, res, function () {

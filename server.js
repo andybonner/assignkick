@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const methodOverride = require('method-override');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));

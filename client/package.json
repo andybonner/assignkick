@@ -2,6 +2,7 @@
   "name": "assignkick",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "antd": "^2.13.6",
     "antd-init": "^2.0.4",
