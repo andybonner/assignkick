@@ -5,7 +5,7 @@ import "./Solution.css";
 // Solution component
 const Solution = props =>
   <section className="solution-container">
-    <h3 className="solution-title">{ props.header }</h3>
+    <h3 className="solution-title text-center">{ props.header }</h3>
 
     <div className="row">
       <div className="col-sm-6">
