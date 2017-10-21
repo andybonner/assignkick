@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Icon, Input, Button } from 'antd';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Import CSS
 import "./LoginForm.css";
@@ -15,6 +16,7 @@ class CustomLoginForm extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        axios.post('/auth/login', values)
       }
     });
 
