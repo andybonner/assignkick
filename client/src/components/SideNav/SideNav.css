@@ -30,7 +30,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-  background:#fbfbfb;
+  /* background:#fbfbfb; */
   border-right:1px solid #e5e5e5;
   position:fixed;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -44,6 +44,11 @@ nav.main-menu.expanded {
   transition:width .05s linear;
   -webkit-transform:translateZ(0) scale(1,1);
   z-index:1000;
+  background: gray; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgba(255,0,0,0),rgba(192,192,192,0.3)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(192,192,192,0.3)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgba(255,0,0,0),rgba(192,192,192,0.3)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,0,0,0), rgba(192,192,192,0.3)); /*Standard*/
 }
 
 .main-menu>ul {
@@ -139,7 +144,6 @@ nav.main-menu li.active>a,
 .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
 .dashboard-page nav.dashboard-menu ul li.active a {
   color:#fff;
-  background-color:#5fa2db;
 }
 
 .has-subnav {
