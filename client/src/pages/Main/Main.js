@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Calendar, Alert, Modal } from 'antd';
+import { Calendar, Alert, Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
@@ -71,11 +71,9 @@ class Main extends Component {
           <div className="left-section">
             <h1 className="course-title">Courses</h1>
 
-            <a href="#add" onClick={ this.showAssignModal }>
-              <span className="nav-text">
-                  add
-              </span>
-            </a>
+            <Button href="#add" onClick={this.showAssignModal} className="editable-add-btn" >
+              Add
+            </Button>
 
             <Modal
               visible={ assignVisible }

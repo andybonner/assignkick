@@ -20,7 +20,7 @@ class AssignmentForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-        axios.post('/auth/add', values);
+        axios.post('/api/add', values);
         
         // Resets fields in modal
         this.props.form.resetFields();
@@ -144,7 +144,7 @@ class AssignmentForm extends Component {
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('confirm', {
+          {getFieldDecorator('deadline', {
             rules: [{
               required: true, message: 'Please enter your assignment due date!',
             }, {

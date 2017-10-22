@@ -6,10 +6,8 @@ const assignmentSchema = new Schema({
   teacher: { type: String, required: true },
   course: { type: String, required: true },
   assignment: { type: String, required: true },
-  deadline: { type: Date(), required: true }
+  deadline: { type: Date, required: true }
 });
-
-userSchema.plugin(passportLocalMongoose);
 
 const Assignments = mongoose.model("Assignments", assignmentSchema);
 
