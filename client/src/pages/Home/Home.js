@@ -1,8 +1,8 @@
 // Dependencies
 import React, { Component } from "react";
 import FullImage from "../../components/FullImage";
-import SideNav from "../../components/SideNav";
-import Footer from "../../components/Footer";
+import SideNav from "../../components/SidebarFooter";
+
 import Struggle from "../../components/Struggle";
 import Solution from "../../components/Solution";
 
@@ -44,7 +44,7 @@ class Home extends Component {
           imageTwoDesc="App Screenshot 2"
         />
         
-        <Footer />
+        
       </section>
     )}
 }

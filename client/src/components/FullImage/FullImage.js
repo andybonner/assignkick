@@ -10,11 +10,9 @@ const FullImage = (props) =>
   >
     {props.children}
     <div className="catch text-center">
-      <h2 className="caption-header">{ props.captionHeader }</h2>
-      <div className="caption-text">
-        <p>{ props.captionCatch }</p>
-        <p>{ props.captionText }</p>
-      </div>
+      <h2>{ props.captionHeader}</h2>
+      <p>{ props.captionCatch }</p>
+      <p>{ props.captionText }</p>
     </div>
   </div>;
 

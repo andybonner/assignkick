@@ -1,15 +1,5 @@
-@font-face {
-  font-family: "Register";
-  src: url("../../assets/fonts/register.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Dosis";
-  src: url("../../assets/fonts/dosis.ttf") format("truetype");
-}
-
 .bg {
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -18,15 +8,14 @@
 
 .catch {
   position: absolute;
-  top: 300px;
+  top: 375px;
   left: 200px;
   background: rgba(0, 0, 0, 0.60);
   padding: 4px 8px;
-  color: white !important;
+  color: white;
   width: 500px;
   margin: 0;
   height: 280px;
-  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 20px 100px 0 rgba(0, 0, 0, 0.19);
 }
 
 p {
@@ -36,18 +25,4 @@ p {
 
 h2 {
   color: white;
-}
-
-.caption-header {
-  color: #FFF;
-  padding-top: 40px;
-  padding-bottom: 35px;
-  font-family: "Register";
-}
-
-.caption-text {
-  padding-left: 20px;
-  padding-right: 25px;
-  font-family: "Dosis";
-  font-size: 16px;
 }

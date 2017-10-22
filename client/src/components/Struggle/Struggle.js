@@ -1,47 +1,23 @@
 // Dependencies
-import React, { Component } from "react";
-import Carousel from 'antd/lib/carousel';
-
-// Import CSS
+import React from "react";
 import "./Struggle.css";
+import {Carousel} from 'react-materialize';
 
 // Struggle component
-class Struggle extends Component {
-  render() {
-    const setting = {
-      speed: 500
-    }
+const Struggle = props =>
+  <section className="about-container">
+    <h3 className="about-title">{ props.header }</h3>
 
-    return(
-      <section className="struggleContainer">
-        <h3 className="about-title text-center">{ this.props.header }</h3>
-
-        <p className="text-center struggleInfo">{ this.props.struggleInfo }</p>
-
-        <Carousel 
-          autoplay 
-          scrollx
-          {...setting}
-        >
-          <div>
-            <img src={ this.props.firstImage } className={ this.props.className } alt={ this.props.firstImage } />
-          </div>
-          <div>
-            <img src={ this.props.secondImage } className={ this.props.className } alt={ this.props.secondImage } />
-          </div>
-          <div>
-            <img src={ this.props.thirdImage } className={ this.props.className } alt={ this.props.thirdImage } />
-          </div>
-          <div>
-            <img src={ this.props.fourthImage } className={ this.props.className } alt={ this.props.fourthImage } />
-          </div>
-          <div>
-            <img src={ this.props.fifthImage } className={ this.props.className } alt={ this.props.fifthImage } />
-          </div>
-        </Carousel>
-
-      </section>
-  )}
-};
+    <Carousel
+      options={{ duration: 1 }}
+      images={[
+        'assets/images/3rd.png',
+        'assets/images/2nd.png',
+        'assets/images/3rd.png',
+        'assets/images/3rd.png',
+        'assets/images/3rd.png'
+      ]} 
+      />
+  </section>;
 
 export default Struggle;
