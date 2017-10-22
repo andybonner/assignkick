@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { Form, Input, Button } from 'antd';
 import axios from "axios";
 
 // Import CSS
@@ -160,7 +159,7 @@ class AssignmentForm extends Component {
           {...tailFormItemLayout}
           className={ this.props.regClass }
         >
-          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }}>Add Assignment</Button>
+          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }} >Add Assignment</Button>
           
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
               Clear

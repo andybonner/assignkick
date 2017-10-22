@@ -5,16 +5,33 @@ import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
 import ClassSection from "../../components/ClassSection";
-import courses from "../../courses.json";
 import AssignForm from '../../components/Forms/AssignForm';
+import axios from 'axios';
+
 
 class Main extends Component {
   // Initial states default to current date
   state = {
     value: moment(),
     selectedValue: moment(),
-    courses,
+    assignments: [],
     assignVisible: false
+  }
+
+  componentDidMount() {
+    this.loadAssignments();
+  }
+
+  loadAssignments = () => {
+    axios.get('/api/assignments/')
+    .then(result=> {
+      console.log(result.data);
+
+      this.setState({
+        assignments: result.data
+      });
+
+    })
   }
 
   showAssignModal = () => {
@@ -53,10 +70,13 @@ class Main extends Component {
     this.setState({ value });
   }
 
+  onChange = event => {
+    this.loadAssignments();
+  }
+
   render() {
     const { value, selectedValue, assignVisible } = this.state;
 
-    console.log(courses);
     return (
       <div>
         <SideNav />
@@ -88,7 +108,7 @@ class Main extends Component {
             </Modal>
 
             {
-              courses.map(item =>(
+              this.state.assignments.map(item =>(
               <ClassSection
                 id={item.id}
                 school={item.school}

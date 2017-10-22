@@ -8,4 +8,11 @@ router.route('/add')
     Assignments.create(req.body);
   });
 
+router.route('/assignments')
+  .get((req, res) => {
+    console.log(req.query)
+    Assignments.find(req.query)
+      .then(dbModel => res.json(dbModel))
+  })
+
 module.exports = router;
