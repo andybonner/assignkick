@@ -6,10 +6,12 @@ const router = require('express').Router();
 router.route('/register')
   .post(function (req, res) {
     console.log('route received as req.body:', req.body);
+    
     User.register(new User({
-      username: req.body.email,
+      email: req.body.email,
       firstName: req.body.firstName,
-      lastName: req.body.lastName
+      lastName: req.body.lastName,
+      username: req.body.email
     }), req.body.password, function (err, user) {
       if (err) {
         console.log('Error:', err);
@@ -21,10 +23,6 @@ router.route('/register')
       }
     });
   });
-
-// app.get('/login', function(req, res) {
-//   res.render('login', { user : req.user });
-// });
 
 router.route('/login')
   .post(function (req, res) {

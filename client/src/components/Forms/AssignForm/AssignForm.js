@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 // Import CSS
-import "./RegForm.css";
+import "./AssignForm.css";
 
 const FormItem = Form.Item;
 
 // Registration Form Class
-class RegistrationForm extends Component {
+class AssignmentForm extends Component {
   state = {
     confirmDirty: false,
   };
@@ -20,7 +20,7 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-        axios.post('/auth/register', values);
+        axios.post('/auth/add', values);
         
         // Resets fields in modal
         this.props.form.resetFields();
@@ -32,17 +32,6 @@ class RegistrationForm extends Component {
     const value = event.target.value;
 
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-  }
-
-  checkPassword = (rule, value, callback) => {
-    const form = this.props.form;
-
-    if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!');
-    } 
-    else {
-      callback();
-    }
   }
 
   checkConfirm = (rule, value, callback) => {
@@ -89,98 +78,80 @@ class RegistrationForm extends Component {
     return (
       <Form onSubmit={ this.handleSubmit }>
 
-        {/* First Name */}
         <FormItem
           {...formItemLayout}
-          label="First Name"
+          label="School"
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('firstName', {
-            rules: [{ required: true, message: 'Please input your first name!', whitespace: true }],
+          {getFieldDecorator('school', {
+            rules: [{ required: true, message: 'Please a school!', whitespace: true }],
           })(
-            <Input className={ this.props.inputClass } placeholder="John" />
+            <Input className={ this.props.inputClass } placeholder="UNC - Chapel Hill" />
           )}
         </FormItem>
 
-        {/* Last Name */}
+
         <FormItem
           {...formItemLayout}
-          label="Last Name"
+          label="Teacher"
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('lastName', {
-            rules: [{ required: true, message: 'Please input your last name!', whitespace: true }],
+          {getFieldDecorator('teacher', {
+            rules: [{ required: true, message: 'Please enter your teacher!', whitespace: true }],
           })(
-            <Input className={ this.props.inputClass } placeholder="Smith" />
+            <Input className={ this.props.inputClass } placeholder="Alper G." />
           )}
         </FormItem>
 
-        {/* Email */}
+
         <FormItem
           {...formItemLayout}
-          label="E-mail"
+          label="Course"
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('email', {
+          {getFieldDecorator('course', {
             rules: [{
-              type: 'email', message: 'The input is not valid E-mail!',
-            }, {
-              required: true, message: 'Please input your E-mail!',
+              required: true, message: 'Please enter your course name!',
             }],
           })(
-            <Input className={ this.props.inputClass } placeholder="abc@123.com" />
+            <Input className={ this.props.inputClass } placeholder="Coding Boot Camp" />
           )}
         </FormItem>
 
-        {/* Password */}
+
         <FormItem
           {...formItemLayout}
-          label="Password"
+          label="Assignment"
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('password', {
+          {getFieldDecorator('assignment', {
             rules: [{
-              required: true, message: 'Please input your password!',
-            }, {
-              validator: this.checkConfirm,
+              required: true, message: 'Please enter an assignment!',
             }],
           })(
-            <Input type="password" className={ this.props.inputClass } placeholder="Secret" />
+            <Input className={ this.props.inputClass } placeholder="Project 3" />
           )}
         </FormItem>
 
-        {/* Password validation */}
+
         <FormItem
           {...formItemLayout}
-          label="Confirm Password"
+          label="Assignment Due Date"
           hasFeedback
           className={ this.props.regClass }
         >
           {getFieldDecorator('confirm', {
             rules: [{
-              required: true, message: 'Please confirm your password!',
+              required: true, message: 'Please enter your assignment due date!',
             }, {
               validator: this.checkPassword,
             }],
           })(
-            <Input type="password" onBlur={ this.handleConfirmBlur } className={ this.props.inputClass } placeholder="Secret" />
-          )}
-        </FormItem>
-
-        {/* Terms of Agreement */}
-        <FormItem 
-          {...tailFormItemLayout} 
-          style={{ marginBottom: 8 }}
-          className={ this.props.regClass }
-        >
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <Link to="/">agreement</Link></Checkbox>
+            <Input type="date" onBlur={ this.handleConfirmBlur } className={ this.props.inputClass } placeholder="11/02/2017" />
           )}
         </FormItem>
 
@@ -189,7 +160,7 @@ class RegistrationForm extends Component {
           {...tailFormItemLayout}
           className={ this.props.regClass }
         >
-          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }}>Register</Button>
+          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }}>Add Assignment</Button>
           
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
               Clear
@@ -200,7 +171,7 @@ class RegistrationForm extends Component {
   }
 }
 
-// Create RegForm component
-const RegForm = Form.create()(RegistrationForm);
+// Create AssignForm component
+const AssignForm = Form.create()(AssignmentForm);
 
-export default RegForm;
+export default AssignForm;

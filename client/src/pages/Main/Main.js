@@ -1,19 +1,46 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Calendar, Alert } from 'antd';
+import { Calendar, Alert, Modal } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
 import ClassSection from "../../components/ClassSection";
 import courses from "../../courses.json";
+import AssignForm from '../../components/Forms/AssignForm';
 
 class Main extends Component {
   // Initial states default to current date
   state = {
     value: moment(),
     selectedValue: moment(),
-    courses
+    courses,
+    assignVisible: false
   }
+
+  showAssignModal = () => {
+    this.setState({
+      assignVisible: true,
+    });
+	}
+
+  handleOk = () => {
+		this.setState({ 
+			loading: true 
+		});
+		
+    setTimeout(() => {
+      this.setState({ 
+				loading: false, 
+				assignVisible: false 
+			});
+    }, 3000);
+	}
+
+  handleCancel = () => {
+    this.setState({ 
+			assignVisible: false 
+		});
+	}
 
   onSelect = (value) => {
     this.setState({
@@ -27,7 +54,7 @@ class Main extends Component {
   }
 
   render() {
-    const { value, selectedValue } = this.state;
+    const { value, selectedValue, assignVisible } = this.state;
 
     console.log(courses);
     return (
@@ -43,6 +70,25 @@ class Main extends Component {
           {/* Courses */}
           <div className="left-section">
             <h1 className="course-title">Courses</h1>
+
+            <a href="#add" onClick={ this.showAssignModal }>
+              <span className="nav-text">
+                  add
+              </span>
+            </a>
+
+            <Modal
+              visible={ assignVisible }
+              title="Register Form"
+              onCancel={ this.handleCancel }
+              footer={null}
+            >
+              <AssignForm
+                regClass="formItems"
+                inputClass="inputItems"
+              />
+            </Modal>
+
             {
               courses.map(item =>(
               <ClassSection
