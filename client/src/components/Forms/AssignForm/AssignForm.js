@@ -159,7 +159,7 @@ class AssignmentForm extends Component {
           {...tailFormItemLayout}
           className={ this.props.regClass }
         >
-          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }} >Add Assignment</Button>
+          <Button type="primary" htmlType="submit" style={{ marginBottom: 20 }} onClick={this.props.loadAssignments} >Add Assignment</Button>
           
           <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
               Clear

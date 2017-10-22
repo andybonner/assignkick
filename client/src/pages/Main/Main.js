@@ -4,8 +4,9 @@ import { Calendar, Alert, Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
-import ClassSection from "../../components/ClassSection";
+import TableData from "../../components/TableData";
 import AssignForm from '../../components/Forms/AssignForm';
+import {Table} from "react-materialize";
 import axios from 'axios';
 
 
@@ -107,19 +108,23 @@ class Main extends Component {
               />
             </Modal>
 
-            {
-              this.state.assignments.map(item =>(
-              <ClassSection
-                id={item.id}
-                school={item.school}
-                teacher={item.teacher}
-                course={item.course}
-                key={item.id}
-                assignment={item.assignment}
-                deadline={item.deadline}
-              />
-              ))
-            }
+          <Table centered bordered hoverable>
+            <thead>
+              <tr>
+                <th data-field="school">School</th>
+                <th data-field="teacher">Teacher</th>
+                <th data-field="course">Course</th>
+                <th data-field="assignment">Assignment</th>
+                <th data-field="deadline">Deadline</th>
+              </tr>
+            </thead>
+
+            <TableData
+              assignments={this.state.assignments}
+            />
+
+          </Table>
+
           </div>
         </div>
         <Footer />
