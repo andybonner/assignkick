@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
 import TableData from "../../components/TableData";
+import TableHeader from '../../components/TableHeader';
 import AssignForm from '../../components/Forms/AssignForm';
 import {Table} from "react-materialize";
 import axios from 'axios';
@@ -31,7 +32,6 @@ class Main extends Component {
       this.setState({
         assignments: result.data
       });
-
     })
   }
 
@@ -98,7 +98,7 @@ class Main extends Component {
 
             <Modal
               visible={ assignVisible }
-              title="Register Form"
+              title="Assignment Registeration Form"
               onCancel={ this.handleCancel }
               footer={null}
             >
@@ -109,15 +109,13 @@ class Main extends Component {
             </Modal>
 
           <Table centered bordered hoverable>
-            <thead>
-              <tr>
-                <th data-field="school">School</th>
-                <th data-field="teacher">Teacher</th>
-                <th data-field="course">Course</th>
-                <th data-field="assignment">Assignment</th>
-                <th data-field="deadline">Deadline</th>
-              </tr>
-            </thead>
+            <TableHeader
+              col1="School"
+              col2="Teacher"
+              col3="Course"
+              col4="Assignment"
+              col5="Deadline"
+            />
 
             <TableData
               assignments={this.state.assignments}
