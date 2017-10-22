@@ -28,6 +28,8 @@ class Main extends Component {
 
   render() {
     const { value, selectedValue } = this.state;
+
+    console.log(courses);
     return (
       <div>
         <SideNav />
@@ -46,27 +48,11 @@ class Main extends Component {
               <ClassSection
                 id={item.id}
                 school={item.school}
-                grade={item.grade}
                 teacher={item.teacher}
                 course={item.course}
                 key={item.id}
-              />
-              ))
-            }
-          </div>
-
-          {/* Assignments */}
-          <div className="left-section">
-            <h1 className="course-title">Assignments</h1>
-            {
-              courses.map(item =>(
-              <ClassSection
-                id={item.id}
-                school={item.school}
-                grade={item.grade}
-                teacher={item.teacher}
-                course={item.course}
-                key={item.id}
+                assignment={item.assignment}
+                deadline={item.deadline}
               />
               ))
             }

@@ -4,7 +4,9 @@
     "grade": 8,
     "course": "Algebra",
     "teacher": "Tikcs",
-    "school": "Chaloner Middle School"
+    "school": "Chaloner Middle School",
+    "deadline": "12-12-2017",
+    "assignment": "Assignment 1"
   },
   {
     "id": 2,
@@ -74,13 +76,17 @@
     "grade": 8,
     "course": "History",
     "teacher": "Feeney",
-    "school": "Alton Middle School"
+    "school": "Alton Middle School",
+    "deadline": "12-12-2017",
+    "assignment": "Assignment 1"
   },
   {
     "id": 12,
     "grade": 8,
     "course": "Science",
     "teacher": "Feeney",
-    "school": "Greene Middle School"
+    "school": "Greene Middle School",
+    "deadline": "12-12-2017",
+    "assignment": "Assignment 1"
   }
 ]
