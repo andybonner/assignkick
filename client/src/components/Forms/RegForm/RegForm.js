@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Import CSS
 import "./RegForm.css";
@@ -19,9 +20,9 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-
-        // ENTER CODE TO SEND TO DB WITH USER INFORMATION
-
+        axios.post('/auth/register', values);
+        
+        // Resets fields in modal
         this.props.form.resetFields();
       }
     });

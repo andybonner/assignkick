@@ -1,11 +1,19 @@
 {
   "dependencies": {
     "axios": "^0.16.2",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "google-auth-library": "^0.11.0",
     "googleapis": "^22.2.0",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.10",
     "mongoose": "^4.12.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.2.1",
     "react-router-dom": "^4.2.2"
   },
   "name": "assignkick",
