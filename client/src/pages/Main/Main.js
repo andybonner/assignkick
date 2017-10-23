@@ -83,7 +83,7 @@ class Main extends Component {
         <SideNav />
 
         <div className="mainContainer">
-          <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
+          <Alert style={{marginTop: 20}} message={`You selected date: ${selectedValue && selectedValue.format('ll')}`} />
           <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} /> 
         </div>
          
@@ -99,6 +99,7 @@ class Main extends Component {
             <Modal
               visible={ assignVisible }
               title="Assignment Registeration Form"
+              className="text-center"
               onCancel={ this.handleCancel }
               footer={null}
             >
@@ -120,7 +121,6 @@ class Main extends Component {
             <TableData
               assignments={this.state.assignments}
             />
-
           </Table>
 
           </div>
