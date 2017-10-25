@@ -13,19 +13,19 @@ class AssignmentForm extends Component {
     confirmDirty: false,
   };
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
+  handleSubmit = event => {
+    event.preventDefault();
 
-  //   this.props.form.validateFieldsAndScroll((error, values) => {
-  //     if (!error) {
-  //       console.log('Received values of form: ', values);
-  //       axios.post('/api/add', values);
+    this.props.form.validateFieldsAndScroll((error, values) => {
+      if (!error) {
+        console.log('Received values of form: ', values);
+        axios.post('/api/add', values);
         
-  //       // Resets fields in modal
-  //       this.props.form.resetFields();
-  //     }
-  //   });
-  // }
+        // Resets fields in modal
+        this.props.form.resetFields();
+      }
+    });
+  }
 
   handleConfirmBlur = event => {
     const value = event.target.value;
@@ -75,7 +75,7 @@ class AssignmentForm extends Component {
     };
 
     return (
-      <Form onSubmit={ this.props.handleSubmit }>
+      <Form onSubmit={ this.handleSubmit }>
 
         <FormItem
           {...formItemLayout}

@@ -83,20 +83,20 @@ class Main extends Component {
     this.loadAssignments();
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  // handleSubmit = event => {
+  //   event.preventDefault();
 
-    this.props.form.validateFieldsAndScroll((error, values) => {
-      if (!error) {
-        console.log('Received values of form: ', values);
+  //   this.props.form.validateFieldsAndScroll((error, values) => {
+  //     if (!error) {
+  //       console.log('Received values of form: ', values);
 
-        axios.post('/api/add', values);
+  //       axios.post('/api/add', values);
         
-        // Resets fields in modal
-        this.props.form.resetFields();
-      }
-    });
-  }
+  //       // Resets fields in modal
+  //       this.props.form.resetFields();
+  //     }
+  //   });
+  // }
 
   render() {
     const { value, selectedValue, assignVisible } = this.state;
@@ -135,7 +135,7 @@ class Main extends Component {
               <AssignForm
                 regClass="formItems"
                 inputClass="inputItems"
-                handleSubmit={this.handleSubmit}
+                /* handleSubmit={this.handleSubmit} */
               />
             </Modal>
 
