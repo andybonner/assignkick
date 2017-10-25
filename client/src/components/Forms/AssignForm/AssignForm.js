@@ -13,19 +13,19 @@ class AssignmentForm extends Component {
     confirmDirty: false,
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  // handleSubmit = event => {
+  //   event.preventDefault();
 
-    this.props.form.validateFieldsAndScroll((error, values) => {
-      if (!error) {
-        console.log('Received values of form: ', values);
-        axios.post('/api/add', values);
+  //   this.props.form.validateFieldsAndScroll((error, values) => {
+  //     if (!error) {
+  //       console.log('Received values of form: ', values);
+  //       axios.post('/api/add', values);
         
-        // Resets fields in modal
-        this.props.form.resetFields();
-      }
-    });
-  }
+  //       // Resets fields in modal
+  //       this.props.form.resetFields();
+  //     }
+  //   });
+  // }
 
   handleConfirmBlur = event => {
     const value = event.target.value;
@@ -41,18 +41,6 @@ class AssignmentForm extends Component {
     }
     
     callback();
-  }
-
-  loadAssignments = () => {
-    axios.get('/api/assignments/')
-    .then(result=> {
-      console.log(result.data);
-
-      this.setState({
-        assignments: result.data
-      });
-
-    })
   }
 
   handleReset = () => this.props.form.resetFields();
@@ -87,7 +75,7 @@ class AssignmentForm extends Component {
     };
 
     return (
-      <Form onSubmit={ this.handleSubmit }>
+      <Form onSubmit={ this.props.handleSubmit }>
 
         <FormItem
           {...formItemLayout}
@@ -96,7 +84,7 @@ class AssignmentForm extends Component {
           className={ this.props.regClass }
         >
           {getFieldDecorator('school', {
-            rules: [{ required: true, message: 'Please a school!', whitespace: true }],
+            rules: [{ required: true, message: 'Please enter a school!', whitespace: true }],
           })(
             <Input className={ this.props.inputClass } placeholder="UNC - Chapel Hill" />
           )}
@@ -139,7 +127,7 @@ class AssignmentForm extends Component {
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('assignment', {
+          {getFieldDecorator('title', {
             rules: [{
               required: true, message: 'Please enter an assignment!',
             }],
@@ -151,11 +139,28 @@ class AssignmentForm extends Component {
 
         <FormItem
           {...formItemLayout}
+          label="Assignment Start Date"
+          hasFeedback
+          className={ this.props.regClass }
+        >
+          {getFieldDecorator('start', {
+            rules: [{
+              required: true, message: 'Please enter your assignment start date!',
+            }, {
+              validator: this.checkPassword,
+            }],
+          })(
+            <Input type="date" onBlur={ this.handleConfirmBlur } className={ this.props.inputClass } placeholder="11/02/2017" />
+          )}
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
           label="Assignment Due Date"
           hasFeedback
           className={ this.props.regClass }
         >
-          {getFieldDecorator('deadline', {
+          {getFieldDecorator('end', {
             rules: [{
               required: true, message: 'Please enter your assignment due date!',
             }, {

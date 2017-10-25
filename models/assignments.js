@@ -5,8 +5,9 @@ const assignmentSchema = new Schema({
   school: { type: String, required: true },
   teacher: { type: String, required: true },
   course: { type: String, required: true },
-  assignment: { type: String, required: true },
-  deadline: { type: Date, required: true }
+  title: { type: String, required: true },
+  start: { type: Date, required: false },
+  end: { type: Date, required: true }
 });
 
 const Assignments = mongoose.model("Assignments", assignmentSchema);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Calendar, Alert, Modal, Button } from 'antd';
+import { Form, Calendar, Alert, Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import "./Main.css";
@@ -9,7 +9,15 @@ import TableHeader from '../../components/TableHeader';
 import AssignForm from '../../components/Forms/AssignForm';
 import {Table} from "react-materialize";
 import axios from 'axios';
+import BigCalendar from 'react-big-calendar';
 
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const FormItem = Form.Item;
+
+BigCalendar.setLocalizer(
+  BigCalendar.momentLocalizer(moment)
+);
 
 class Main extends Component {
   // Initial states default to current date
@@ -28,7 +36,7 @@ class Main extends Component {
     axios.get('/api/assignments/')
     .then(result=> {
       console.log(result.data);
-
+      
       this.setState({
         assignments: result.data
       });
@@ -75,6 +83,21 @@ class Main extends Component {
     this.loadAssignments();
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.props.form.validateFieldsAndScroll((error, values) => {
+      if (!error) {
+        console.log('Received values of form: ', values);
+
+        axios.post('/api/add', values);
+        
+        // Resets fields in modal
+        this.props.form.resetFields();
+      }
+    });
+  }
+
   render() {
     const { value, selectedValue, assignVisible } = this.state;
 
@@ -82,10 +105,16 @@ class Main extends Component {
       <div>
         <SideNav />
 
-        <div className="mainContainer">
-          <Alert style={{marginTop: 20}} message={`You selected date: ${selectedValue && selectedValue.format('ll')}`} />
-          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} /> 
-        </div>
+        <BigCalendar
+          {...this.props}
+          events={this.state.assignments}
+          step={25}
+          timeslots={8}
+          defaultView='month'
+          defaultDate={new Date()}
+          views={['month']}
+          className="mainCalendar"
+        />
          
         <div className="row"> 
           {/* Courses */}
@@ -106,6 +135,7 @@ class Main extends Component {
               <AssignForm
                 regClass="formItems"
                 inputClass="inputItems"
+                handleSubmit={this.handleSubmit}
               />
             </Modal>
 
