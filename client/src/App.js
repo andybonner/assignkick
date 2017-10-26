@@ -1,6 +1,6 @@
 // Dependencies
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import { LocaleProvider } from 'antd';
@@ -15,7 +15,6 @@ const App = () =>
     <Router>
       <div>
         <Route exact path="/" component={ Home } />
-        <Route exact path="/main" component={ Main } />
       </div>
     </Router>
   </LocaleProvider>;
