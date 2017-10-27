@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Form, Input, Checkbox, Button } from 'antd';
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions';
 
 // Import CSS
 import "./RegForm.css";
@@ -20,7 +21,7 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-        axios.post('/auth/register', values);
+        this.props.registerUser(values);
         
         // Resets fields in modal
         this.props.form.resetFields();
@@ -203,4 +204,11 @@ class RegistrationForm extends Component {
 // Create RegForm component
 const RegForm = Form.create()(RegistrationForm);
 
-export default RegForm;
+function mapStateToProps(state) {  
+  return {
+    errorMessage: state.auth.error,
+    message: state.auth.message
+  };
+}
+
+export default (mapStateToProps, { registerUser })(RegForm);
