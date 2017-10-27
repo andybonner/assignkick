@@ -15,6 +15,7 @@ const App = () =>
     <Router>
       <div>
         <Route exact path="/" component={ Home } />
+        <Route exact path="/main" component={ Main } />
       </div>
     </Router>
   </LocaleProvider>;

@@ -8,9 +8,34 @@ import TableData from "../../components/TableData";
 import AssignForm from '../../components/Forms/AssignForm';
 import {Table} from "react-materialize";
 import axios from 'axios';
+// from tutorial
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
 
 
 class Main extends Component {
+  // inherit check for authenticated user
+  constructor(props) {
+    super(props);
+    this.props.protectedTest();
+  }
+
+  renderContent() {
+    if(this.props.content) {
+      return (
+        <div>{this.props.content}</div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderContent()}
+      </div>
+    );
+  }
+
   // Initial states default to current date
   state = {
     value: moment(),
@@ -133,4 +158,8 @@ class Main extends Component {
   }
 }
 
-export default Main;
+function mapStateToProps(state) {
+  return { content: state.auth.content };
+}
+
+export default connect(mapStateToProps, actions)(Main);
