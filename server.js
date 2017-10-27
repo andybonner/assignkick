@@ -2,19 +2,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./routes/routes");
-const path = require('path');
-const http = require('http');
-const passport = require("passport");
-const session = require("express-session");
-const LocalStrategy = require('passport-local').Strategy;
-const methodOverride = require('method-override');
+config = require('./config/main');
+// const routes = require("./routes/routes");
+// const path = require('path');
+// const http = require('http');
+// const passport = require("passport");
+// const session = require("express-session");
+// const LocalStrategy = require('passport-local').Strategy;
+const methodOverride = require('method-override'); //needed?
+const router = require('./router');
 
-const CORS = require('cors');
+// const CORS = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.use(CORS());
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,40 +23,27 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 
-// For Passport 
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-
 // Serve up static assets
 app.use(express.static("client/build"));
 
-app.use(function(req, res, next) {
+// Enable CORS from client-side
+app.use(function(req, res, next) {  
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
 
-// Add routes, both API and view
-app.use(routes);
-// app.use(app.router);
-
-// passport config
-const User = require('./models/user.js');
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+router(app);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/assignkick",
-  {
-    useMongoClient: true
-  }
-);
+mongoose.connect(config.database, {
+  useMongoClient: true
+});
 
 // routes
 // require('./routes/routes.js')(app);
