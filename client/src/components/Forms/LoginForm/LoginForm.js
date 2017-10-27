@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Icon, Input, Button } from 'antd';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { loginUser } from '../../../actions';
 
 // Import CSS
 import "./LoginForm.css";
