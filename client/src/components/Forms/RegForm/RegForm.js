@@ -57,6 +57,16 @@ class RegistrationForm extends Component {
   }
 
   handleReset = () => this.props.form.resetFields();
+  
+  renderAlert() {
+    if(this.props.errorMessage) {
+      return (
+        <div>
+          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+        </div>
+      );
+    }
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
