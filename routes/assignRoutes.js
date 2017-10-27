@@ -13,6 +13,6 @@ router.route('/assignments')
     console.log(req.query)
     Assignments.find(req.query)
       .then(dbModel => res.json(dbModel))
-  })
+  });
 
 module.exports = router;
