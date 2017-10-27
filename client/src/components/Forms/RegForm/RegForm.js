@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Input, Checkbox, Button } from 'antd';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions';
+import { registerUser } from '../../../actions';
 
 // Import CSS
 import "./RegForm.css";
