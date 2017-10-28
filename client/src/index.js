@@ -1,13 +1,12 @@
 // Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import './index.css';
 // pasted from tutorial:
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import routes from './routes';
 import reducers from './reducers/index';
@@ -37,14 +36,13 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <div>
-        <Route path="/" component={Home}>
-          <Route path="/main" component={RequireAuth(Main)} />
-          <Route path="*" component={NotFoundPage} />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/main" component={RequireAuth(Main)} />
+        <Route path="*" component={NotFoundPage} />
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

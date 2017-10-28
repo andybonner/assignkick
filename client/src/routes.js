@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import App from "./components/app"
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFoundPage from './pages/not-found-page';
@@ -13,9 +13,11 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import RequireAuth from './components/auth/require-auth';
 
 export default (
-  <Route>
-    <Route path="/" component={Home} />
-    <Route path="/main" component={RequireAuth(Main)} />
-    <Route path="*" component={NotFoundPage} />
-  </Route>
+  <Router>
+    <div>
+      <Route exact path="/" component={Home} />
+      <Route path="/main" component={RequireAuth(Main)} />
+      <Route path="*" component={NotFoundPage} />
+    </div>
+  </Router>
 );
