@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Input, Checkbox, Button } from 'antd';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../../actions';
 
 // Import CSS
@@ -221,4 +222,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default (mapStateToProps, { registerUser })(RegForm);
+export default (mapStateToProps, { registerUser })(form(RegForm));

@@ -5,7 +5,7 @@ import './index.css';
 // pasted from tutorial:
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { Router, browserHistory } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 import routes from './routes';
 import reducers from './reducers/index';
@@ -29,7 +29,7 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <BrowserRouter routes={routes} />
   </Provider>,
   document.getElementById('root')
 );

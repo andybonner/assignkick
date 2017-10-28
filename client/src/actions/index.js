@@ -1,12 +1,14 @@
 import axios from 'axios';  
-import { browserHistory } from 'react-router';  
+import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';  
 import { AUTH_USER,  
          AUTH_ERROR,
          UNAUTH_USER,
          PROTECTED_TEST } from './types';
 
-const API_URL = 'http://localhost:3000/api';
+// Problem 1: he's hard-coded this localhost URL
+const API_URL = 'http://localhost:3001/api';
+const CLIENT_ROOT_URL = 'http://localhost:3000';
 
 export function errorHandler(dispatch, error, type) {  
   let errorMessage = '';
@@ -47,7 +49,7 @@ export function loginUser({ email, password }) {
     }
   }
 
-export function registerUser({ email, firstName, lastName, password }) {  
+export function registerUser({ email, firstName, lastName, password }) {
   return function(dispatch) {
     axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
     .then(response => {
