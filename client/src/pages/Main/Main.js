@@ -126,7 +126,6 @@ class Main extends Component {
                   ))
                 }
               </tbody>
-
             </Table>
           </div>
         </div>
