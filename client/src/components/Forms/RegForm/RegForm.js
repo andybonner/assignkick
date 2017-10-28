@@ -8,6 +8,11 @@ import { registerUser } from '../../../actions';
 // Import CSS
 import "./RegForm.css";
 
+// from tutorial
+const form = reduxForm({  
+  form: 'register'
+});
+
 const FormItem = Form.Item;
 
 // Registration Form Class
