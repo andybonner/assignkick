@@ -36,9 +36,10 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <Route path="/" component={Home} />
-        <Route path="/main" component={RequireAuth(Main)} />
-        <Route path="*" component={NotFoundPage} />
+        <Route path="/" component={Home}>
+          <Route path="/main" component={RequireAuth(Main)} />
+          <Route path="*" component={NotFoundPage} />
+        </Route>
       </div>
     </BrowserRouter>
   </Provider>,
