@@ -1,9 +1,9 @@
-// Dependencies
 import React from "react";
+
+// css
 import "./FullImage.css";
 
-// FullImage component
-const FullImage = (props) => 
+const FullImage = props => 
   <div
     className="bg"
     style={{ backgroundImage: `url(${props.backgroundImage})` }}

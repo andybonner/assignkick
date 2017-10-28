@@ -37,8 +37,8 @@ class Home extends Component {
         </Struggle>
 
         <Solution
-          imageOne="assets/images/homeHeader.jpeg"
-          imageTwo="assets/images/homeHeader.jpeg"
+          imageOne="assets/images/homepage.png"
+          imageTwo="assets/images/application.png"
           header="The Solution:"
           imageOneDesc="App Screenshot 1"
           imageTwoDesc="App Screenshot 2"
