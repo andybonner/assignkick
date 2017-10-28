@@ -2,7 +2,7 @@ const AuthenticationController = require('./controllers/authentication'),
   express = require('express'),
   passportService = require('./config/passport'),
   passport = require('passport');
-const Assignments = require('../models/assignments');
+const Assignments = require('./models/assignments');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });

@@ -6,7 +6,7 @@ import SideNav from "../../components/SideNav";
 import "./Main.css";
 import TableData from "../../components/TableData";
 import AssignForm from '../../components/Forms/AssignForm';
-import {Table} from "react-materialize";
+import { Table } from "react-materialize";
 import axios from 'axios';
 // from tutorial
 import { connect } from 'react-redux';
@@ -21,9 +21,12 @@ class Main extends Component {
   }
 
   renderContent() {
-    if(this.props.content) {
+    if (this.props.content) {
       return (
-        <div>{this.props.content}</div>
+        <div>
+          <div>{this.props.content}</div>
+          <div>{this.renderSomething()}</div>
+        </div>
       );
     }
   }
@@ -50,40 +53,40 @@ class Main extends Component {
 
   loadAssignments = () => {
     axios.get('/api/assignments/')
-    .then(result=> {
-      console.log(result.data);
+      .then(result => {
+        console.log(result.data);
 
-      this.setState({
-        assignments: result.data
-      });
+        this.setState({
+          assignments: result.data
+        });
 
-    })
+      })
   }
 
   showAssignModal = () => {
     this.setState({
       assignVisible: true,
     });
-	}
+  }
 
   handleOk = () => {
-		this.setState({ 
-			loading: true 
-		});
-		
+    this.setState({
+      loading: true
+    });
+
     setTimeout(() => {
-      this.setState({ 
-				loading: false, 
-				assignVisible: false 
-			});
+      this.setState({
+        loading: false,
+        assignVisible: false
+      });
     }, 3000);
-	}
+  }
 
   handleCancel = () => {
-    this.setState({ 
-			assignVisible: false 
-		});
-	}
+    this.setState({
+      assignVisible: false
+    });
+  }
 
   onSelect = (value) => {
     this.setState({
@@ -100,7 +103,7 @@ class Main extends Component {
     this.loadAssignments();
   }
 
-  render() {
+  renderSomething() {
     const { value, selectedValue, assignVisible } = this.state;
 
     return (
@@ -109,10 +112,10 @@ class Main extends Component {
 
         <div className="mainContainer">
           <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
-          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} /> 
+          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} />
         </div>
-         
-        <div className="row"> 
+
+        <div className="row">
           {/* Courses */}
           <div className="left-section">
             <h1 className="course-title">Courses</h1>
@@ -122,9 +125,9 @@ class Main extends Component {
             </Button>
 
             <Modal
-              visible={ assignVisible }
+              visible={assignVisible}
               title="Register Form"
-              onCancel={ this.handleCancel }
+              onCancel={this.handleCancel}
               footer={null}
             >
               <AssignForm
@@ -133,22 +136,22 @@ class Main extends Component {
               />
             </Modal>
 
-          <Table centered bordered hoverable>
-            <thead>
-              <tr>
-                <th data-field="school">School</th>
-                <th data-field="teacher">Teacher</th>
-                <th data-field="course">Course</th>
-                <th data-field="assignment">Assignment</th>
-                <th data-field="deadline">Deadline</th>
-              </tr>
-            </thead>
+            <Table centered bordered hoverable>
+              <thead>
+                <tr>
+                  <th data-field="school">School</th>
+                  <th data-field="teacher">Teacher</th>
+                  <th data-field="course">Course</th>
+                  <th data-field="assignment">Assignment</th>
+                  <th data-field="deadline">Deadline</th>
+                </tr>
+              </thead>
 
-            <TableData
-              assignments={this.state.assignments}
-            />
+              <TableData
+                assignments={this.state.assignments}
+              />
 
-          </Table>
+            </Table>
 
           </div>
         </div>

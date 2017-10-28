@@ -227,4 +227,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default (mapStateToProps, { registerUser })(form(RegForm));
+export default connect(mapStateToProps, { registerUser })(RegForm);

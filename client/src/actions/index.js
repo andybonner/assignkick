@@ -1,14 +1,10 @@
 import axios from 'axios';  
 import { browserHistory } from 'react-router';
-import cookie from 'react-cookie';  
+import { deleteCookie, getCookie, setCookie } from '../util/cookie-utils';
 import { AUTH_USER,  
          AUTH_ERROR,
          UNAUTH_USER,
          PROTECTED_TEST } from './types';
-
-// Problem 1: he's hard-coded this localhost URL
-const API_URL = 'http://localhost:3001/api';
-const CLIENT_ROOT_URL = 'http://localhost:3000';
 
 export function errorHandler(dispatch, error, type) {  
   let errorMessage = '';
@@ -37,11 +33,11 @@ export function errorHandler(dispatch, error, type) {
 
 export function loginUser({ email, password }) {  
   return function(dispatch) {
-    axios.post(`${API_URL}/auth/login`, { email, password })
+    axios.post('/api/auth/login', { email, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
+      setCookie('token', response.token, { maxAge: response.tokenExpiration });
       dispatch({ type: AUTH_USER });
-      window.location.href = CLIENT_ROOT_URL + '/main';
+      window.location.href = '/main';
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -51,11 +47,11 @@ export function loginUser({ email, password }) {
 
 export function registerUser({ email, firstName, lastName, password }) {
   return function(dispatch) {
-    axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
+    axios.post(`/api/auth/register`, { email, firstName, lastName, password })
     .then(response => {
-      cookie.save('token', response.data.token, { path: '/' });
+      setCookie('token', response.token, { maxAge: response.tokenExpiration });
       dispatch({ type: AUTH_USER });
-      window.location.href = CLIENT_ROOT_URL + '/main';
+      window.location.href = '/main';
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -66,16 +62,16 @@ export function registerUser({ email, firstName, lastName, password }) {
 export function logoutUser() {  
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    cookie.remove('token', { path: '/' });
+    deleteCookie('token');
 
-    window.location.href = CLIENT_ROOT_URL + '/';
+    window.location.href = '/';
   }
 }
 
 export function protectedTest() {  
   return function(dispatch) {
-    axios.get(`${API_URL}/protected`, {
-      headers: { 'Authorization': cookie.load('token') }
+    axios.get(`api/protected`, {
+      headers: { 'Authorization': getCookie('token') }
     })
     .then(response => {
       dispatch({
