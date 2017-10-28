@@ -27,6 +27,11 @@ footer {
   overflow: scroll;
 }
 
+.table-cell {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .table-header-main {
   margin-left: 110px;
   margin-right: 80px;
