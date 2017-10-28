@@ -21,8 +21,15 @@ footer {
   margin-right: 80px;
   border-color: black;
   width: 100%;
-  height: 350px;
+  min-height: 350px;
+  max-height: 500px;
   margin-bottom: 30px;
+  overflow: scroll;
+}
+
+.table-header-main {
+  margin-left: 110px;
+  margin-right: 80px;
 }
 
 .table-section {
@@ -35,13 +42,9 @@ footer {
   font-size: 40px;
 }
 
-.editable-add-btn {
-  margin-left: 20px;
-  float: right;
-}
-
 .add-button {
   width: 150px;
+  float: right;
 }
 
 .rbc-toolbar-label {

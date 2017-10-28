@@ -72,18 +72,16 @@ class Main extends Component {
           endAccessor='end'
           className="mainCalendar" />
          
-        <div className="row"> 
-          <div className="left-section">
+         <div className='table-header-main'>
             <h1 className="course-title">Courses
-              <span className="editable-add-btn">
               <Button href="#add" onClick={this.showAssignModal} className='add-button' >
                 Add Assignment
               </Button>
-              </span>
             </h1>
+          </div>
 
-            
-
+        <div className="row"> 
+          <div className="left-section">
             <Modal
               visible={ assignVisible }
               title="Assignment Registeration Form"
@@ -101,7 +99,8 @@ class Main extends Component {
                 col2="Teacher"
                 col3="Course"
                 col4="Assignment"
-                col5="Deadline" />
+                col5="Deadline"
+                col6="Delete Assignment" />
               <TableData assignments={this.state.assignments} />
             </Table>
           </div>

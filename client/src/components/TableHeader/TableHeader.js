@@ -8,6 +8,7 @@ const TableHeader = props =>
       <th data-field={(props.col3).toLowerCase()}>{props.col3}</th>
       <th data-field={(props.col4).toLowerCase()}>{props.col4}</th>
       <th data-field={(props.col5).toLowerCase()}>{props.col5}</th>
+      <th data-field={(props.col6).toLowerCase()}>{props.col6}</th>
     </tr>
   </thead>;
 
