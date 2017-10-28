@@ -37,8 +37,14 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-<Router history={history}>
-</Router>
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={Home}>
+          <Route path="/main" component={RequireAuth(Main)} />
+          <Route path="*" component={NotFoundPage} />
+        </Route>
+      </div>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
