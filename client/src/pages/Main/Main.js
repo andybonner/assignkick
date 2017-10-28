@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Alert, Modal, Button } from 'antd';
+import { Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
 import TableHeader from '../../components/TableHeader';
@@ -120,7 +120,7 @@ class Main extends Component {
             
                       <td className='table-cell'>{moment(item.end).add(1, 'days').format('ll')}</td>
             
-                      <td><Button floating className='red' waves='light' icon='delete' onClick={() => this.deleteAssignment(item._id)} /></td>
+                      <td><Button className='red' icon='delete' onClick={() => this.deleteAssignment(item._id)} /></td>
                     </tr>
                   ))
                 }
