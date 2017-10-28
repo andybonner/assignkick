@@ -14,9 +14,7 @@ import BigCalendar from 'react-big-calendar';
 import "./Main.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-
 BigCalendar.momentLocalizer(moment);
-
 
 class Main extends Component {
   state = {
@@ -39,6 +37,13 @@ class Main extends Component {
     })
   }
 
+  deleteAssignment = (id) => {
+    axios.delete('/api/assignments/' + id)
+      .then(result => {
+        this.loadAssignments();
+      })
+  }
+
   showAssignModal = () => {
     this.setState({
       assignVisible: true,
@@ -50,7 +55,7 @@ class Main extends Component {
 			assignVisible: false 
     });
     this.loadAssignments();
-	}
+  }
 
   render() {
     const { assignVisible } = this.state;
@@ -101,7 +106,27 @@ class Main extends Component {
                 col4="Assignment"
                 col5="Deadline"
                 col6="Delete Assignment" />
-              <TableData assignments={this.state.assignments} />
+
+              <tbody>
+                {
+                  this.state.assignments.map(item =>(
+                    <tr key={item._id} className='table-rows'>
+                      <td className='table-cell'>{item.school}</td>
+            
+                      <td className='table-cell'>{item.teacher}</td>
+            
+                      <td className='table-cell'>{item.course}</td>
+            
+                      <td className='table-cell'>{item.title}</td>
+            
+                      <td className='table-cell'>{moment(item.end).add(1, 'days').format('ll')}</td>
+            
+                      <td><Button floating className='red' waves='light' icon='delete' onClick={() => this.deleteAssignment(item._id)} /></td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+
             </Table>
           </div>
         </div>
