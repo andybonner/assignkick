@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Form, Input, Button } from 'antd';
 import axios from "axios";
 
-// Import CSS
+// css
 import "./AssignForm.css";
 
 const FormItem = Form.Item;
 
-// Registration Form Class
 class AssignmentForm extends Component {
   state = {
     confirmDirty: false,
@@ -18,7 +17,6 @@ class AssignmentForm extends Component {
 
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
-        console.log('Received values of form: ', values);
         axios.post('/api/add', values);
         
         // Resets fields in modal
@@ -31,16 +29,6 @@ class AssignmentForm extends Component {
     const value = event.target.value;
 
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
-  }
-
-  checkConfirm = (rule, value, callback) => {
-    const form = this.props.form;
-
-    if (value && this.state.confirmDirty) {
-      form.validateFields(['confirm'], { force: true });
-    }
-    
-    callback();
   }
 
   handleReset = () => this.props.form.resetFields();
@@ -81,7 +69,7 @@ class AssignmentForm extends Component {
           {...formItemLayout}
           label="School"
           hasFeedback
-          className={ this.props.regClass }
+          className={ this.props.regClass } 
         >
           {getFieldDecorator('school', {
             rules: [{ required: true, message: 'Please enter a school!', whitespace: true }],
@@ -171,7 +159,6 @@ class AssignmentForm extends Component {
           )}
         </FormItem>
 
-        {/* Register */}
         <FormItem 
           {...tailFormItemLayout}
           className={ this.props.regClass }
@@ -187,7 +174,6 @@ class AssignmentForm extends Component {
   }
 }
 
-// Create AssignForm component
 const AssignForm = Form.create()(AssignmentForm);
 
 export default AssignForm;

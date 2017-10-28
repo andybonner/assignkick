@@ -6,16 +6,16 @@ const TableData = props =>
   <tbody>
     {
       props.assignments.map(item =>(
-        <tr key={item._id}>
-          <td>{item.school}</td>
+        <tr key={item._id} className='table-rows'>
+          <td className='table-cell'>{item.school}</td>
 
-          <td>{item.teacher}</td>
+          <td className='table-cell'>{item.teacher}</td>
 
-          <td>{item.course}</td>
+          <td className='table-cell'>{item.course}</td>
 
-          <td>{item.assignment}</td>
+          <td className='table-cell'>{item.title}</td>
 
-          <td>{moment(item.deadline).format('ll')}</td>
+          <td className='table-cell'>{moment(item.end).add(1, 'days').format('ll')}</td>
         </tr>
       ))
     }

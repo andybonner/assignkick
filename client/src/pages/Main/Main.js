@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Form, Calendar, Alert, Modal, Button } from 'antd';
+import { Alert, Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNav from "../../components/SideNav";
-import "./Main.css";
 import TableData from "../../components/TableData";
 import TableHeader from '../../components/TableHeader';
 import AssignForm from '../../components/Forms/AssignForm';
-import {Table} from "react-materialize";
+import { Table } from "react-materialize";
 import axios from 'axios';
 import BigCalendar from 'react-big-calendar';
 
+// css
+import "./Main.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-const FormItem = Form.Item;
 
-BigCalendar.setLocalizer(
-  BigCalendar.momentLocalizer(moment)
-);
+BigCalendar.momentLocalizer(moment);
+
 
 class Main extends Component {
-  // Initial states default to current date
   state = {
     value: moment(),
     selectedValue: moment(),
@@ -34,9 +32,7 @@ class Main extends Component {
 
   loadAssignments = () => {
     axios.get('/api/assignments/')
-    .then(result=> {
-      console.log(result.data);
-      
+    .then(result=> {      
       this.setState({
         assignments: result.data
       });
@@ -49,57 +45,15 @@ class Main extends Component {
     });
 	}
 
-  handleOk = () => {
-		this.setState({ 
-			loading: true 
-		});
-		
-    setTimeout(() => {
-      this.setState({ 
-				loading: false, 
-				assignVisible: false 
-			});
-    }, 3000);
-	}
-
   handleCancel = () => {
     this.setState({ 
 			assignVisible: false 
-		});
+    });
+    this.loadAssignments();
 	}
 
-  onSelect = (value) => {
-    this.setState({
-      value,
-      selectedValue: value,
-    });
-  }
-
-  onPanelChange = (value) => {
-    this.setState({ value });
-  }
-
-  onChange = event => {
-    this.loadAssignments();
-  }
-
-  // handleSubmit = event => {
-  //   event.preventDefault();
-
-  //   this.props.form.validateFieldsAndScroll((error, values) => {
-  //     if (!error) {
-  //       console.log('Received values of form: ', values);
-
-  //       axios.post('/api/add', values);
-        
-  //       // Resets fields in modal
-  //       this.props.form.resetFields();
-  //     }
-  //   });
-  // }
-
   render() {
-    const { value, selectedValue, assignVisible } = this.state;
+    const { assignVisible } = this.state;
 
     return (
       <div>
@@ -108,54 +62,53 @@ class Main extends Component {
         <BigCalendar
           {...this.props}
           events={this.state.assignments}
-          step={25}
-          timeslots={8}
+          timeslots={7}
           defaultView='month'
           defaultDate={new Date()}
           views={['month']}
-          className="mainCalendar"
-        />
+          startAccessor='start'
+          popup
+          culture='en'
+          endAccessor='end'
+          className="mainCalendar" />
          
         <div className="row"> 
-          {/* Courses */}
           <div className="left-section">
-            <h1 className="course-title">Courses</h1>
+            <h1 className="course-title">Courses
+              <span className="editable-add-btn">
+              <Button href="#add" onClick={this.showAssignModal} className='add-button' >
+                Add Assignment
+              </Button>
+              </span>
+            </h1>
 
-            <Button href="#add" onClick={this.showAssignModal} className="editable-add-btn" >
-              Add
-            </Button>
+            
 
             <Modal
               visible={ assignVisible }
               title="Assignment Registeration Form"
               className="text-center"
               onCancel={ this.handleCancel }
-              footer={null}
-            >
+              footer={null} >
               <AssignForm
                 regClass="formItems"
-                inputClass="inputItems"
-                /* handleSubmit={this.handleSubmit} */
-              />
+                inputClass="inputItems" />
             </Modal>
 
-          <Table centered bordered hoverable>
-            <TableHeader
-              col1="School"
-              col2="Teacher"
-              col3="Course"
-              col4="Assignment"
-              col5="Deadline"
-            />
-
-            <TableData
-              assignments={this.state.assignments}
-            />
-          </Table>
-
+            <Table centered bordered hoverable className='table-section'>
+              <TableHeader
+                col1="School"
+                col2="Teacher"
+                col3="Course"
+                col4="Assignment"
+                col5="Deadline" />
+              <TableData assignments={this.state.assignments} />
+            </Table>
           </div>
         </div>
+
         <Footer />
+        
       </div>
     );
   }
