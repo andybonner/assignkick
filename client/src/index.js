@@ -39,7 +39,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path="/" component={Home} />
-        <Route path="/main" component={RequireAuth(Main)} />
+        <Route path="/main" component={Main} />
         <Route path="*" component={NotFoundPage} />
       </div>
     </Router>

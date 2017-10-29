@@ -25,7 +25,6 @@ class Main extends Component {
       return (
         <div>
           <div>{this.props.content}</div>
-          <div>{this.renderSomething()}</div>
         </div>
       );
     }
@@ -103,7 +102,7 @@ class Main extends Component {
     this.loadAssignments();
   }
 
-  renderSomething() {
+  render() {
     const { value, selectedValue, assignVisible } = this.state;
 
     return (
