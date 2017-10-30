@@ -20,6 +20,9 @@ const UserSchema = new Schema({
     firstName: { type: String },
     lastName: { type: String }
   },
+  assignments: [{
+    type: Schema.Types.ObjectId, ref: 'Assignments'
+  }],
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date }
 },
