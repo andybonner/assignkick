@@ -4,15 +4,24 @@ const router = require('express').Router();
 // NB '/api' portion of route is already being passed in, so this equals '/api/register'
 router.route('/add')
   .post(function (req, res) {
-    console.log('route received as req.body:', req.body);
-    Assignments.create(req.body);
+    Assignments
+      .create(req.body);
   });
 
 router.route('/assignments')
   .get((req, res) => {
-    console.log(req.query)
-    Assignments.find(req.query)
+    Assignments
+      .find(req.query)
       .then(dbModel => res.json(dbModel))
+  });
+
+router.route("/assignments/:id")
+  .delete((req, res) => {
+    Assignments
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   });
 
 module.exports = router;

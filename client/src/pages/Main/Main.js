@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from "moment";
-import { Calendar, Alert, Modal, Button } from 'antd';
+import { Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNavAuth from "../../components/SideNavAuth";
 import "./Main.css";
@@ -12,6 +12,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+BigCalendar.momentLocalizer(moment);
 
 class Main extends Component {
   // inherit check for authenticated user
@@ -62,6 +63,13 @@ class Main extends Component {
       })
   }
 
+  deleteAssignment = (id) => {
+    axios.delete('/api/assignments/' + id)
+      .then(result => {
+        this.loadAssignments();
+      })
+  }
+
   showAssignModal = () => {
     this.setState({
       assignVisible: true,
@@ -92,69 +100,84 @@ class Main extends Component {
       value,
       selectedValue: value,
     });
-  }
-
-  onPanelChange = (value) => {
-    this.setState({ value });
-  }
-
-  onChange = event => {
     this.loadAssignments();
   }
 
   render() {
-    const { value, selectedValue, assignVisible } = this.state;
+    const { assignVisible } = this.state;
 
     return (
       <div>
         <SideNavAuth />
 
-        <div className="mainContainer">
-          <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
-          <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} fullscreen={false} />
-        </div>
+        <BigCalendar
+          {...this.props}
+          events={this.state.assignments}
+          timeslots={7}
+          defaultView='month'
+          defaultDate={new Date()}
+          views={['month']}
+          startAccessor='start'
+          popup
+          culture='en'
+          endAccessor='end'
+          className="mainCalendar" />
+         
+         <div className='table-header-main'>
+            <h1 className="course-title">Courses
+              <Button href="#add" onClick={this.showAssignModal} className='add-button' >
+                Add Assignment
+              </Button>
+            </h1>
+          </div>
 
-        <div className="row">
-          {/* Courses */}
+        <div className="row"> 
           <div className="left-section">
-            <h1 className="course-title">Courses</h1>
-
-            <Button href="#add" onClick={this.showAssignModal} className="editable-add-btn" >
-              Add
-            </Button>
-
             <Modal
-              visible={assignVisible}
-              title="Register Form"
-              onCancel={this.handleCancel}
-              footer={null}
-            >
+              visible={ assignVisible }
+              title="Assignment Registeration Form"
+              className="text-center"
+              onCancel={ this.handleCancel }
+              footer={null} >
               <AssignForm
                 regClass="formItems"
-                inputClass="inputItems"
-              />
+                inputClass="inputItems" />
             </Modal>
 
-            <Table centered bordered hoverable>
-              <thead>
-                <tr>
-                  <th data-field="school">School</th>
-                  <th data-field="teacher">Teacher</th>
-                  <th data-field="course">Course</th>
-                  <th data-field="assignment">Assignment</th>
-                  <th data-field="deadline">Deadline</th>
-                </tr>
-              </thead>
+            <Table centered bordered hoverable className='table-section'>
+              <TableHeader
+                col1="School"
+                col2="Teacher"
+                col3="Course"
+                col4="Assignment"
+                col5="Deadline"
+                col6="Delete Assignment" />
 
-              <TableData
-                assignments={this.state.assignments}
-              />
-
+              <tbody>
+                {
+                  this.state.assignments.map(item =>(
+                    <tr key={item._id} className='table-rows'>
+                      <td className='table-cell'>{item.school}</td>
+            
+                      <td className='table-cell'>{item.teacher}</td>
+            
+                      <td className='table-cell'>{item.course}</td>
+            
+                      <td className='table-cell'>{item.title}</td>
+            
+                      <td className='table-cell'>{moment(item.end).add(1, 'days').format('ll')}</td>
+            
+                      <td><Button className='red' icon='delete' onClick={() => this.deleteAssignment(item._id)} /></td>
+                    </tr>
+                  ))
+                }
+              </tbody>
             </Table>
-
           </div>
         </div>
+
         <Footer />
+        
       </div>
     );
   }
