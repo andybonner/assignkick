@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFoundPage from './pages/not-found-page';
 import { LocaleProvider } from 'antd';
-import enUS from 'antd/lib/locale-provider/en_US';  
 import RequireAuth from './components/auth/require-auth';
 
 export default (

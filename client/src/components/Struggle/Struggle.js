@@ -1,11 +1,9 @@
-// Dependencies
 import React, { Component } from "react";
 import Carousel from 'antd/lib/carousel';
 
-// Import CSS
+// css
 import "./Struggle.css";
 
-// Struggle component
 class Struggle extends Component {
   render() {
     const setting = {
@@ -21,8 +19,7 @@ class Struggle extends Component {
         <Carousel 
           autoplay 
           scrollx
-          {...setting}
-        >
+          {...setting} >
           <div>
             <img src={ this.props.firstImage } className={ this.props.className } alt={ this.props.firstImage } />
           </div>
@@ -39,7 +36,6 @@ class Struggle extends Component {
             <img src={ this.props.fifthImage } className={ this.props.className } alt={ this.props.fifthImage } />
           </div>
         </Carousel>
-
       </section>
   )}
 };

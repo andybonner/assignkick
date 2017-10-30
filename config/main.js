@@ -3,4 +3,4 @@ module.exports = {
   'secret': 'code monkey',
   // Database connection information
   'database': process.env.MONGODB_URI || "mongodb://localhost/assignkick"
-  }
+}

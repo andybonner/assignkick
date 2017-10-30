@@ -1,22 +1,13 @@
-// Dependencies
 import React, { Component } from "react";
 import SidebarFooter from "../../components/SidebarFooter";
-import { Modal } from "antd";
 import { Link } from "react-router-dom";
-import RegForm from "../../components/Forms/RegForm";
-import LoginForm from "../../components/Forms/LoginForm";
 import { connect } from 'react-redux';
 import * as actions from "../../actions";
 
-// Import CSS
+// css
 import "./SideNavAuth.css";
 
-// SideNavAuth component
 class SideNavAuth extends Component {
-
-	constructor(props){
-		super(props);
-	}
   state = {
 		regVisible: false,
 		loginVisible: false
