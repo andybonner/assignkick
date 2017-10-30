@@ -19,9 +19,8 @@ import Main from "./pages/Main";
 import NotFoundPage from './pages/not-found-page';
 // import App from './App';
 import { getCookie } from './util/cookie-utils';
-import moment from "moment";
-import "moment/locale/en-ca";
-moment.locale('en-ca');
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
 const history = createBrowserHistory()
 
@@ -36,14 +35,16 @@ if (token) {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={RequireUnAuth(Home)} />
-        <Route path="/main" component={RequireAuth(Main)} />
-        <Route path="*" component={NotFoundPage} />
-      </Switch>
-    </Router>
-  </Provider>,
+  <LocaleProvider locale={enUS}>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={RequireUnAuth(Home)} />
+          <Route path="/main" component={RequireAuth(Main)} />
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+      </Router>
+    </Provider>
+  </LocaleProvider>,
   document.getElementById('root')
 );
