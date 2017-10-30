@@ -63,7 +63,7 @@ export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
     deleteCookie('token');
-
+    console.log('cookie deleted');
     window.location.href = '/';
   }
 }

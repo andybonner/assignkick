@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "Register";
+  src: url("../../assets/fonts/register.ttf") format("truetype");
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa {
+  position: relative;
+  display: table-cell;
+  width: 50px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+  width:250px;
+  overflow:visible;
+}
+
+.icon-text {
+  font-family: "Register";
+  font-size: 2em;
+  margin-left: 15px;
+}
+
+.main-menu {
+  /* background:#fbfbfb; */
+  border-right:1px solid #e5e5e5;
+  position:fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  top:0;
+  bottom:0;
+  height:100%;
+  left:0;
+  width:50px;
+  overflow:hidden;
+  -webkit-transition:width .05s linear;
+  transition:width .05s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index:1000;
+  background: gray; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, rgba(255,255,255,.7), rgba(192,192,192,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgba(255,0,0,0),rgba(192,192,192,0.3)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right, rgba(255,255,255,.7), rgba(192,192,192,1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(192,192,192,.9)); /*Standard*/
+}
+
+.main-menu>ul {
+  margin:7px 0;
+}
+
+.main-menu li {
+  position:relative;
+  display:block;
+  width:250px;
+}
+
+.main-menu li>a {
+  position:relative;
+  display:table;
+  border-collapse:collapse;
+  border-spacing:0;
+  color:#000;
+  font-family: arial;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-decoration:none;
+  -webkit-transform:translateZ(0) scale(1,1);
+  -webkit-transition:all .1s linear;
+  transition:all .1s linear;
+}
+
+.main-menu .nav-icon {
+  position:relative;
+  display:table-cell;
+  width:40px;
+  height: 40px;
+  text-align:center;
+  vertical-align:middle;
+  font-size:18px;
+  margin: 5px;
+}
+
+.main-menu .nav-text {
+  position:relative;
+  display:table-cell;
+  vertical-align:middle;
+  width:190px;
+  padding-left: 20px;
+}
+
+.main-menu>ul.copyright {
+  position:absolute;
+  left:0;
+  bottom:0;
+  color: black;
+  overflow: hidden;
+  display:block;
+  width:250px;
+}
+
+.no-touch .scrollable.hover {
+  overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+  overflow-y:auto;
+  overflow:visible;
+}
+
+a:hover,
+a:focus {
+  text-decoration:none;
+}
+
+nav {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
+
+nav ul,
+nav li {
+  outline:0;
+  margin:0;
+  padding:0;
+}
+
+.main-menu li:hover>a,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+  color:#fff;
+}
+
+.has-subnav {
+  border-bottom: 1px solid #e5e5e5;
+  margin-top: 10px;
+}

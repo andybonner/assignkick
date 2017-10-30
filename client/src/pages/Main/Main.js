@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from "moment";
 import { Calendar, Alert, Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
-import SideNav from "../../components/SideNav";
+import SideNavAuth from "../../components/SideNavAuth";
 import "./Main.css";
 import TableData from "../../components/TableData";
 import AssignForm from '../../components/Forms/AssignForm';
@@ -53,7 +53,7 @@ class Main extends Component {
   loadAssignments = () => {
     axios.get('/api/assignments/')
       .then(result => {
-        console.log(result.data);
+        console.log('Recieved from api/assignments:', result.data);
 
         this.setState({
           assignments: result.data
@@ -107,7 +107,7 @@ class Main extends Component {
 
     return (
       <div>
-        <SideNav />
+        <SideNavAuth />
 
         <div className="mainContainer">
           <Alert message={`You selected date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`} />
