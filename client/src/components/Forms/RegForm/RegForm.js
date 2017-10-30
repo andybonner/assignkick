@@ -186,19 +186,6 @@ class RegistrationForm extends Component {
           )}
         </FormItem>
 
-        {/* Terms of Agreement */}
-        <FormItem 
-          {...tailFormItemLayout} 
-          style={{ marginBottom: 8 }}
-          className={ this.props.regClass }
-        >
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <Link to="/">agreement</Link></Checkbox>
-          )}
-        </FormItem>
-
         {/* Register */}
         <FormItem 
           {...tailFormItemLayout}
