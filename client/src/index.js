@@ -1,7 +1,7 @@
 // Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import './index.css';
 // pasted from tutorial:
@@ -37,11 +37,11 @@ if (token) {
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <div>
+      <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/main" component={RequireAuth(Main)} />
         <Route path="*" component={NotFoundPage} />
-      </div>
+      </Switch>
     </Router>
   </Provider>,
   document.getElementById('root')
