@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { loginUser } from '../../../actions';
 
-// Import CSS
+// css
 import "./LoginForm.css";
 
 const FormItem = Form.Item;
 
-// Registration Form Class
 class CustomLoginForm extends Component {
   handleSubmit = event => {
     event.preventDefault();

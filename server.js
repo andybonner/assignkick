@@ -1,18 +1,8 @@
-// Dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 config = require('./config/main');
-// const routes = require("./routes/routes");
-// const path = require('path');
-// const http = require('http');
-// const passport = require("passport");
-// const session = require("express-session");
-// const LocalStrategy = require('passport-local').Strategy;
-const methodOverride = require('method-override'); //needed?
 const router = require('./router');
-
-// const CORS = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,8 +10,6 @@ const PORT = process.env.PORT || 3001;
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-app.use(methodOverride('_method'));
 
 // Serve up static assets
 app.use(express.static("client/build"));

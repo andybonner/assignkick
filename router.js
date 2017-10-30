@@ -41,6 +41,15 @@ module.exports = function (app) {
       Assignments.create(req.body);
     });
 
+  apiRoutes.route('/assignments/:id')
+    .delete(function (req, res) {
+      Assignments
+        .findById({ _id: req.params.id })
+        .then(dbModel => dbModel.remove())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    });
+
   apiRoutes.route('/assignments')
     .get((req, res) => {
       console.log('api/assignments GET route recieved query:', req.query)

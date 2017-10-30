@@ -1,5 +1,5 @@
 import axios from 'axios';  
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { deleteCookie, getCookie, setCookie } from '../util/cookie-utils';
 import { AUTH_USER,  
          AUTH_ERROR,

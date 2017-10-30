@@ -1,4 +1,3 @@
-// Dependencies
 import React, { Component } from "react";
 import SidebarFooter from "../../components/SidebarFooter";
 import { Modal } from "antd";
@@ -6,10 +5,9 @@ import { Link } from "react-router-dom";
 import RegForm from "../../components/Forms/RegForm";
 import LoginForm from "../../components/Forms/LoginForm";
 
-// Import CSS
+// css
 import "./SideNav.css";
 
-// SideNav component
 class SideNav extends Component {
   state = {
 		regVisible: false,

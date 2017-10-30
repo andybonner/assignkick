@@ -1,9 +1,7 @@
-// Dependencies
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
-// Footer component
 const Footer = () =>
   <footer className="footer">
     <div className="row row-container">

@@ -3,16 +3,17 @@ import moment from "moment";
 import { Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNavAuth from "../../components/SideNavAuth";
-import "./Main.css";
 import AssignForm from '../../components/Forms/AssignForm';
 import { Table } from "react-materialize";
 import axios from 'axios';
 import BigCalendar from 'react-big-calendar';
 import TableHeader from '../../components/TableHeader';
 import "react-big-calendar/lib/css/react-big-calendar.css";
-// from tutorial
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+
+// css
+import "./Main.css";
 
 BigCalendar.momentLocalizer(moment);
 
@@ -33,13 +34,13 @@ class Main extends Component {
     }
   }
 
-  render() {
-    return (
-      <div>
-        {this.renderContent()}
-      </div>
-    );
-  }
+  // render() {
+  //   return (
+  //     <div>
+  //       {this.renderContent()}
+  //     </div>
+  //   );
+  // }
 
   // Initial states default to current date
   state = {
@@ -61,7 +62,6 @@ class Main extends Component {
         this.setState({
           assignments: result.data
         });
-
       })
   }
 

@@ -2,20 +2,18 @@ import React, { Component } from "react";
 import { Form, Input, Checkbox, Button } from 'antd';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+// import { reduxForm } from 'redux-form';
 import { registerUser } from '../../../actions';
 
-// Import CSS
+// css
 import "./RegForm.css";
 
-// from tutorial
-const form = reduxForm({  
-  form: 'register'
-});
+// const form = reduxForm({  
+//   form: 'register'
+// });
 
 const FormItem = Form.Item;
 
-// Registration Form Class
 class RegistrationForm extends Component {
   state = {
     confirmDirty: false,
