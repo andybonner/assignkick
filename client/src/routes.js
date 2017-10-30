@@ -1,3 +1,4 @@
+// NB this file is not currently being used. TODO: Delete before production
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from "./components/app"
