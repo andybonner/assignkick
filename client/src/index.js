@@ -13,6 +13,7 @@ import reducers from './reducers/index';
 import { AUTH_USER } from './actions/types';
 import RequireAuth from './components/auth/require-auth';
 // end tutorial paste
+import RequireUnAuth from './components/auth/require-unauth';
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFoundPage from './pages/not-found-page';
@@ -38,7 +39,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={RequireUnAuth(Home)} />
         <Route path="/main" component={RequireAuth(Main)} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
