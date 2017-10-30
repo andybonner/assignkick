@@ -4,10 +4,12 @@ import { Modal, Button } from 'antd';
 import Footer from "../../components/Footer";
 import SideNavAuth from "../../components/SideNavAuth";
 import "./Main.css";
-import TableData from "../../components/TableData";
 import AssignForm from '../../components/Forms/AssignForm';
 import { Table } from "react-materialize";
 import axios from 'axios';
+import BigCalendar from 'react-big-calendar';
+import TableHeader from '../../components/TableHeader';
+import "react-big-calendar/lib/css/react-big-calendar.css";
 // from tutorial
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -76,29 +78,9 @@ class Main extends Component {
     });
   }
 
-  handleOk = () => {
-    this.setState({
-      loading: true
-    });
-
-    setTimeout(() => {
-      this.setState({
-        loading: false,
-        assignVisible: false
-      });
-    }, 3000);
-  }
-
   handleCancel = () => {
     this.setState({
       assignVisible: false
-    });
-  }
-
-  onSelect = (value) => {
-    this.setState({
-      value,
-      selectedValue: value,
     });
     this.loadAssignments();
   }
