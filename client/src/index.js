@@ -31,7 +31,7 @@ const token = getCookie('token');
 if (token) {
   store.dispatch({ type: AUTH_USER });
 }
-
+ 
 ReactDOM.render(
   <LocaleProvider locale={enUS}>
     <Provider store={store}>
