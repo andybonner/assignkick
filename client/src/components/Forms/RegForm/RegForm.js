@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Checkbox, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { Form, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 // import { reduxForm } from 'redux-form';
 import { registerUser } from '../../../actions';
