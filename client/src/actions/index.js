@@ -37,7 +37,7 @@ export function loginUser({ email, password }) {
     .then(response => {
       setCookie('token', response.token, { maxAge: response.tokenExpiration });
       dispatch({ type: AUTH_USER });
-      window.location.href = '/main';
+      // window.location.href = '/main';
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -51,7 +51,7 @@ export function registerUser({ email, firstName, lastName, password }) {
     .then(response => {
       setCookie('token', response.token, { maxAge: response.tokenExpiration });
       dispatch({ type: AUTH_USER });
-      window.location.href = '/main';
+      // window.location.href = '/main';
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR)
