@@ -1,23 +1,25 @@
-import axios from 'axios';  
+import axios from 'axios';
 // import { browserHistory } from 'react-router';
 import { deleteCookie, getCookie, setCookie } from '../util/cookie-utils';
-import { AUTH_USER,  
-         AUTH_ERROR,
-         UNAUTH_USER,
-         PROTECTED_TEST } from './types';
+import {
+  AUTH_USER,
+  AUTH_ERROR,
+  UNAUTH_USER,
+  PROTECTED_TEST
+} from './types';
 
-export function errorHandler(dispatch, error, type) {  
+export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
-  if(error.data.error) {
+  if (error.data.error) {
     errorMessage = error.data.error;
-  } else if(error.data) {
+  } else if (error.data) {
     errorMessage = error.data;
   } else {
     errorMessage = error;
   }
 
-  if(error.status === 401) {
+  if (error.status === 401) {
     dispatch({
       type: type,
       payload: 'You are not authorized to do this. Please login and try again.'
@@ -35,7 +37,6 @@ export function loginUser({ email, password }) {
   return function (dispatch) {
     axios.post('/api/auth/login', { email, password })
       .then(response => {
-        console.log('response.data.user:', response.data.user);
         setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
         dispatch({
           type: AUTH_USER
@@ -52,7 +53,7 @@ export function registerUser({ email, firstName, lastName, password }) {
   return function (dispatch) {
     axios.post(`/api/auth/register`, { email, firstName, lastName, password })
       .then(response => {
-        setCookie('token', response.token, { maxAge: response.tokenExpiration });
+        setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
         dispatch({
           type: AUTH_USER
         });
@@ -64,7 +65,7 @@ export function registerUser({ email, firstName, lastName, password }) {
   }
 }
 
-export function logoutUser() {  
+export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
     deleteCookie('token');
@@ -72,19 +73,19 @@ export function logoutUser() {
   }
 }
 
-export function protectedTest() {  
-  return function(dispatch) {
+export function protectedTest() {
+  return function (dispatch) {
     axios.get(`api/protected`, {
       headers: { 'Authorization': getCookie('token') }
     })
-    .then(response => {
-      dispatch({
-        type: PROTECTED_TEST,
-        payload: response.data.content
+      .then(response => {
+        dispatch({
+          type: PROTECTED_TEST,
+          payload: response.data.content
+        });
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, AUTH_ERROR)
       });
-    })
-    .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
-    });
   }
 }
