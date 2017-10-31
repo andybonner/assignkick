@@ -34,20 +34,13 @@ class Main extends Component {
     }
   }
 
-  // render() {
-  //   return (
-  //     <div>
-  //       {this.renderContent()}
-  //     </div>
-  //   );
-  // }
-
   // Initial states default to current date
   state = {
     value: moment(),
     selectedValue: moment(),
     assignments: [],
-    assignVisible: false
+    assignVisible: false,
+    newAssignmentDate: []
   }
 
   componentDidMount() {
@@ -57,10 +50,19 @@ class Main extends Component {
   loadAssignments = () => {
     axios.get('/api/assignments/')
       .then(result => {
-        console.log('Recieved from api/assignments:', result.data);
+
+      const newResultData = result.data.map(item => {
+          const newItem = {
+            start: moment(item.start).add(1, 'days').format(),
+            end: moment(item.end).add(1, 'days').format(),
+            title: item.title
+          }
+          return newItem;
+        });
 
         this.setState({
-          assignments: result.data
+          assignments: result.data,
+          newAssignmentDate: newResultData
         });
       })
   }
@@ -94,7 +96,7 @@ class Main extends Component {
 
         <BigCalendar
           {...this.props}
-          events={this.state.assignments}
+          events={this.state.newAssignmentDate}
           timeslots={7}
           defaultView='month'
           defaultDate={new Date()}
