@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import moment from "moment";
 import { Modal, Button } from 'antd';
-import Footer from "../../components/Footer";
 import SideNavAuth from "../../components/SideNavAuth";
 import AssignForm from '../../components/Forms/AssignForm';
 import { Table } from "react-materialize";
 import axios from 'axios';
 import BigCalendar from 'react-big-calendar';
 import TableHeader from '../../components/TableHeader';
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 // css
 import "./Main.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 BigCalendar.momentLocalizer(moment);
 
@@ -98,7 +97,7 @@ class Main extends Component {
           {...this.props}
           events={this.state.newAssignmentDate}
           timeslots={7}
-          defaultView='month'
+          defaultView={'month'}
           defaultDate={new Date()}
           views={['month']}
           startAccessor='start'
@@ -121,7 +120,6 @@ class Main extends Component {
               visible={ assignVisible }
               title="Assignment Registeration Form"
               className="text-center"
-              onCancel={ this.handleCancel }
               footer={null} >
               <AssignForm
                 regClass="formItems"
@@ -158,10 +156,7 @@ class Main extends Component {
               </tbody>
             </Table>
           </div>
-        </div>
-
-        <Footer />
-        
+        </div>        
       </div>
     );
   }
