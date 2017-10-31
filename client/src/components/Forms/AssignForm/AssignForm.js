@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Input, Button } from 'antd';
+import { connect } from 'react-redux';
 import axios from "axios";
 
 // css
@@ -8,6 +9,7 @@ import "./AssignForm.css";
 const FormItem = Form.Item;
 
 class AssignmentForm extends Component {
+
   state = {
     confirmDirty: false,
   };
@@ -17,6 +19,8 @@ class AssignmentForm extends Component {
 
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
+        // add user id 
+        values.user = this.props.user._id;
         axios.post('/api/add', values);
         
         // Resets fields in modal
@@ -174,6 +178,10 @@ class AssignmentForm extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { user: state.auth.user }
+}
+
 const AssignForm = Form.create()(AssignmentForm);
 
-export default AssignForm;
+export default connect(mapStateToProps)(AssignForm);
