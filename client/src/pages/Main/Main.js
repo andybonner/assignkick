@@ -39,7 +39,7 @@ class Main extends Component {
     selectedValue: moment(),
     assignments: [],
     assignVisible: false,
-    newAssignmentDate: []
+    calendarFormattedAssignments: []
   }
 
   componentDidMount() {
@@ -61,7 +61,7 @@ class Main extends Component {
 
         this.setState({
           assignments: result.data,
-          newAssignmentDate: newResultData
+          calendarFormattedAssignments: newResultData
         });
       })
   }
@@ -95,7 +95,7 @@ class Main extends Component {
 
         <BigCalendar
           {...this.props}
-          events={this.state.newAssignmentDate}
+          events={this.state.calendarFormattedAssignments}
           timeslots={7}
           defaultView={'month'}
           defaultDate={new Date()}
