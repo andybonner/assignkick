@@ -26,7 +26,11 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return { authenticated: state.auth.authenticated };
+    console.log('require-auth sez state is:', state)
+    return {
+      authenticated: state.auth.authenticated,
+      user: state.auth.user
+    }
   }
 
   return connect(mapStateToProps)(Authentication);

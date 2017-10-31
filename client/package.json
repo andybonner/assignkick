@@ -8,6 +8,7 @@
     "antd-init": "^2.0.4",
     "axios": "^0.16.2",
     "jquery": "^3.2.1",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.19.1",
     "moment-timezone": "^0.5.13",
     "prop-types": "^15.6.0",

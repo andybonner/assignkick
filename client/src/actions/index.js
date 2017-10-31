@@ -31,31 +31,36 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function loginUser({ email, password }) {  
-  return function(dispatch) {
+export function loginUser({ email, password }) {
+  return function (dispatch) {
     axios.post('/api/auth/login', { email, password })
-    .then(response => {
-      setCookie('token', response.token, { maxAge: response.tokenExpiration });
-      dispatch({ type: AUTH_USER });
-      window.location.href = '/main';
-    })
-    .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
-    });
-    }
+      .then(response => {
+        console.log('response.data.user:', response.data.user);
+        setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
+        dispatch({
+          type: AUTH_USER
+        });
+        window.location.href = '/main';
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, AUTH_ERROR)
+      });
   }
+}
 
 export function registerUser({ email, firstName, lastName, password }) {
-  return function(dispatch) {
+  return function (dispatch) {
     axios.post(`/api/auth/register`, { email, firstName, lastName, password })
-    .then(response => {
-      setCookie('token', response.token, { maxAge: response.tokenExpiration });
-      dispatch({ type: AUTH_USER });
-      window.location.href = '/main';
-    })
-    .catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
-    });
+      .then(response => {
+        setCookie('token', response.token, { maxAge: response.tokenExpiration });
+        dispatch({
+          type: AUTH_USER
+        });
+        window.location.href = '/main';
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response, AUTH_ERROR)
+      });
   }
 }
 
@@ -63,7 +68,6 @@ export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
     deleteCookie('token');
-    console.log('cookie deleted');
     window.location.href = '/';
   }
 }

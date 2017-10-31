@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFoundPage from './pages/not-found-page';
 import { getCookie } from './util/cookie-utils';
+import jwt_decode from 'jwt-decode';
 import { LocaleProvider } from 'antd';
 import enUS from 'antd/lib/locale-provider/en_US';
 
@@ -29,7 +30,11 @@ const store = createStoreWithMiddleware(reducers);
 const token = getCookie('token');
 
 if (token) {
-  store.dispatch({ type: AUTH_USER });
+  const userInfo = jwt_decode(token);
+  store.dispatch({
+    type: AUTH_USER,
+    user: userInfo
+   });
 }
 
 ReactDOM.render(

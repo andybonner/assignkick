@@ -18,7 +18,7 @@ function setUserInfo(request) {
     firstName: request.profile.firstName,
     lastName: request.profile.lastName,
     email: request.email,
-    role: request.role,
+    role: request.role
   }
 };
 
