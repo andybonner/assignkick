@@ -21,7 +21,6 @@ import enUS from 'antd/lib/locale-provider/en_US';
 import './index.css';
 
 const history = createBrowserHistory();
-console.log(history);
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
