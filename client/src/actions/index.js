@@ -34,6 +34,7 @@ export function errorHandler(dispatch, error, type) {
 export function loginUser({ email, password }) {
   return function (dispatch) {
     axios.post('/api/auth/login', { email, password })
+<<<<<<< HEAD
       .then(response => {
         console.log('response.data.user:', response.data.user);
         setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
@@ -45,12 +46,23 @@ export function loginUser({ email, password }) {
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR)
       });
+=======
+    .then(response => {
+      setCookie('token', response.token, { maxAge: response.tokenExpiration });
+      dispatch({ type: AUTH_USER });
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error.response, AUTH_ERROR)
+    });
+    }
+>>>>>>> master
   }
 }
 
 export function registerUser({ email, firstName, lastName, password }) {
   return function (dispatch) {
     axios.post(`/api/auth/register`, { email, firstName, lastName, password })
+<<<<<<< HEAD
       .then(response => {
         setCookie('token', response.token, { maxAge: response.tokenExpiration });
         dispatch({
@@ -61,6 +73,15 @@ export function registerUser({ email, firstName, lastName, password }) {
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR)
       });
+=======
+    .then(response => {
+      setCookie('token', response.token, { maxAge: response.tokenExpiration });
+      dispatch({ type: AUTH_USER });
+    })
+    .catch((error) => {
+      errorHandler(dispatch, error.response, AUTH_ERROR)
+    });
+>>>>>>> master
   }
 }
 

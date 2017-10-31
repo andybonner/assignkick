@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Icon, Input, Button } from 'antd';
-import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { loginUser } from '../../../actions';
 
@@ -15,7 +14,6 @@ class CustomLoginForm extends Component {
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         this.props.loginUser(values);
       }
     });
@@ -84,10 +82,6 @@ class CustomLoginForm extends Component {
           <Button style={{ marginLeft: 8 }} onClick={ this.handleReset }>
               Clear
           </Button>
-          
-          <br />
-
-          Or <Link to="/#submit">register now!</Link>
         </FormItem>
       </Form>
     );

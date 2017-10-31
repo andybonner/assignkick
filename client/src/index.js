@@ -36,7 +36,7 @@ if (token) {
     user: userInfo
    });
 }
-
+ 
 ReactDOM.render(
   <LocaleProvider locale={enUS}>
     <Provider store={store}>

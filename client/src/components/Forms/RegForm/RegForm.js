@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input, Checkbox, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { Form, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 // import { reduxForm } from 'redux-form';
 import { registerUser } from '../../../actions';
@@ -183,19 +182,6 @@ class RegistrationForm extends Component {
             }],
           })(
             <Input type="password" onBlur={ this.handleConfirmBlur } className={ this.props.inputClass } placeholder="Secret" />
-          )}
-        </FormItem>
-
-        {/* Terms of Agreement */}
-        <FormItem 
-          {...tailFormItemLayout} 
-          style={{ marginBottom: 8 }}
-          className={ this.props.regClass }
-        >
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <Link to="/">agreement</Link></Checkbox>
           )}
         </FormItem>
 
