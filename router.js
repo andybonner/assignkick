@@ -52,7 +52,7 @@ module.exports = function (app) {
 
   apiRoutes.route('/assignments')
     .get((req, res) => {
-      console.log('api/assignments GET route recieved query:', req.query)
+      console.log('api/assignments GET route recieved query:', req.query);
       Assignments.find(req.query)
         .then(dbModel => res.json(dbModel))
     });
