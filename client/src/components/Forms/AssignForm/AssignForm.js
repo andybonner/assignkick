@@ -21,7 +21,16 @@ class AssignmentForm extends Component {
       if (!error) {
         // add user id 
         values.user = this.props.user._id;
-        axios.post('/api/add', values);
+        // create assignment
+        axios.post('/api/add', values)
+        .then(response => {
+          // user is response.data.user
+          // assignment is response.data._id
+          // find that user, and update "assignments" property with id of this assignment
+          axios.put('/api/user-update/' + response.data.user, {assignmentID: response.data._id});
+
+        });
+        // update user with returned id of new assignment
         
         // Resets fields in modal
         this.props.form.resetFields();

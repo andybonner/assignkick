@@ -3,6 +3,7 @@ const AuthenticationController = require('./controllers/authentication'),
   passportService = require('./config/passport'),
   passport = require('passport');
 const Assignments = require('./models/assignments');
+const User = require('./models/user');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -38,7 +39,8 @@ module.exports = function (app) {
   apiRoutes.route('/add')
     .post(function (req, res) {
       console.log('route received as req.body:', req.body);
-      Assignments.create(req.body);
+      Assignments.create(req.body)
+      .then(dbModel => res.json(dbModel))
     });
 
   apiRoutes.route('/assignments/:id')
@@ -55,5 +57,17 @@ module.exports = function (app) {
       console.log('api/assignments GET route recieved query:', req.query);
       Assignments.find(req.query)
         .then(dbModel => res.json(dbModel))
+    });
+
+  apiRoutes.route('/user-update/:id')
+    .put((req, res) => {
+      console.log('user-update PUT route received:', req.body);
+      const userID = req.params.id;
+      User.findById(userID, function(err, dbUser) {
+        console.log('dbUser:', dbUser);
+        dbUser.assignments.push(req.body.assignmentID);
+        console.log('dbuser.assignments:', dbUser.assignments);
+        dbUser.save();
+      });
     });
 };
