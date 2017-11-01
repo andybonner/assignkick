@@ -184,6 +184,7 @@ class AssignmentForm extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('AssignForm sez state is:', state);
   return { user: state.auth.user }
 }
 
