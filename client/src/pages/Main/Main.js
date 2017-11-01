@@ -54,7 +54,11 @@ class Main extends Component {
     axios.get('/api/user-assignments/' + userID)
       .then(result => {
       console.log('result in Main:', result);
-      const newResultData = result.data.assignments.map(item => {
+
+      if (result.data === null) {
+        console.log('There are no assignments');
+      } else {
+        const newResultData = result.data.assignments.map(item => {
           const newItem = {
             start: moment(item.start).add(1, 'days').format(),
             end: moment(item.end).add(1, 'days').format(),
@@ -67,7 +71,8 @@ class Main extends Component {
           assignments: result.data.assignments,
           calendarFormattedAssignments: newResultData
         });
-      })
+      }
+    })
   }
 
   deleteAssignment = (id) => {
@@ -124,6 +129,7 @@ class Main extends Component {
               visible={ assignVisible }
               title="Assignment Registeration Form"
               className="text-center"
+              onCancel={this.handleCancel}
               footer={null} >
               <AssignForm
                 regClass="formItems"
