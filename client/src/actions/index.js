@@ -40,7 +40,6 @@ export function loginUser({ email, password }) {
         dispatch({
           type: AUTH_USER
         });
-        window.location.href = '/main';
       })
       .catch((error) => {
         console.log('the mystery error is:', error)
