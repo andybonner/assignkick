@@ -52,10 +52,11 @@ module.exports = function (app) {
         .catch(err => res.status(422).json(err));
     });
 
-  apiRoutes.route('/assignments')
+  apiRoutes.route('/user-assignments/:id')
     .get((req, res) => {
       console.log('api/assignments GET route recieved query:', req.query);
-      Assignments.find(req.query)
+      User.findById(req.params.id)
+        .populate('assignments')
         .then(dbModel => res.json(dbModel))
     });
 
@@ -70,4 +71,7 @@ module.exports = function (app) {
         dbUser.save();
       });
     });
+
+  apiRoutes.route('user-get-all')
+    .get
 };

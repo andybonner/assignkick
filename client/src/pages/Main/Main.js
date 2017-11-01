@@ -47,10 +47,12 @@ class Main extends Component {
   }
 
   loadAssignments = () => {
-    axios.get('/api/assignments/')
-      .then(result => {
+    const userID = this.props.user._id;
 
-      const newResultData = result.data.map(item => {
+    axios.get('/api/user-assignments/' + userID)
+      .then(result => {
+      console.log('result in Main:', result);
+      const newResultData = result.data.assignments.map(item => {
           const newItem = {
             start: moment(item.start).add(1, 'days').format(),
             end: moment(item.end).add(1, 'days').format(),
@@ -60,7 +62,7 @@ class Main extends Component {
         });
 
         this.setState({
-          assignments: result.data,
+          assignments: result.data.assignments,
           calendarFormattedAssignments: newResultData
         });
       })
@@ -163,7 +165,10 @@ class Main extends Component {
 }
 
 function mapStateToProps(state) {
-  return { content: state.auth.content };
+  return { 
+    content: state.auth.content,
+    user: state.auth.user
+  };
 }
 
 export default connect(mapStateToProps, actions)(Main);
