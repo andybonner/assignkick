@@ -4,6 +4,7 @@ const AuthenticationController = require('./controllers/authentication'),
   passport = require('passport');
 const Assignments = require('./models/assignments');
 const User = require('./models/user');
+const path = require('path');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -70,5 +71,9 @@ module.exports = function (app) {
         console.log('dbuser.assignments:', dbUser.assignments);
         dbUser.save();
       });
+    });
+
+    app.get('*', function (request, response){
+      response.sendFile(path.join(__dirname, './client/build/index.html'));
     });
 };
