@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { browserHistory } from 'react-router';
 import { deleteCookie, getCookie, setCookie } from '../util/cookie-utils';
 import {
   AUTH_USER,
@@ -58,7 +57,6 @@ export function registerUser({ email, firstName, lastName, password }) {
         dispatch({
           type: AUTH_USER
         });
-        window.location.href = '/main';
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -70,7 +68,6 @@ export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
     deleteCookie('token');
-    window.location.href = '/';
   }
 }
 

@@ -71,7 +71,4 @@ module.exports = function (app) {
         dbUser.save();
       });
     });
-
-  apiRoutes.route('user-get-all')
-    .get
 };
