@@ -44,6 +44,7 @@ export function loginUser({ email, password }) {
         window.location.href = '/main';
       })
       .catch((error) => {
+        console.log('the mystery error is:', error)
         errorHandler(dispatch, error.response, AUTH_ERROR)
       });
   }

@@ -43,7 +43,9 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.loadAssignments();
+    if (this.props.user) {
+      this.loadAssignments();
+    }
   }
 
   loadAssignments = () => {
