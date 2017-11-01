@@ -40,7 +40,7 @@ if (token) {
 ReactDOM.render(
   <LocaleProvider locale={enUS}>
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route exact path="/" component={RequireUnAuth(Home)} />
           <Route path="/main" component={RequireAuth(Main)} />
