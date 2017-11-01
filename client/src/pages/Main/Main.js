@@ -123,7 +123,7 @@ class Main extends Component {
             </h1>
           </div>
 
-        <div className="row"> 
+        <div className="row" {...this.props}> 
           <div className="left-section">
             <Modal
               visible={ assignVisible }
@@ -131,7 +131,7 @@ class Main extends Component {
               className="text-center"
               onCancel={this.handleCancel}
               footer={null} >
-              <AssignForm
+              <AssignForm {...this.props}
                 regClass="formItems"
                 inputClass="inputItems" />
             </Modal>
