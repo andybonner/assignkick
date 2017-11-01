@@ -9,41 +9,42 @@ import "./AssignForm.css";
 const FormItem = Form.Item;
 
 class AssignmentForm extends Component {
-
   state = {
     confirmDirty: false,
   };
 
+  // function to handle submit
   handleSubmit = event => {
     event.preventDefault();
 
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
-        // add user id 
+        // stores user id within values object
         values.user = this.props.user._id;
-        // create assignment
-        axios.post('/api/add', values)
-        .then(response => {
-          // user is response.data.user
-          // assignment is response.data._id
-          // find that user, and update "assignments" property with id of this assignment
-          axios.put('/api/user-update/' + response.data.user, {assignmentID: response.data._id});
 
-        });
-        // update user with returned id of new assignment
-        
+        // creates assignments for user
+        axios.post('/api/add', values)
+          .then(response => {
+            // user is response.data.user
+            // assignment is response.data._id
+            // finds that user, and update "assignments" property with id of this assignment
+            axios.put('/api/user-update/' + response.data.user, {assignmentID: response.data._id});
+          });
+
         // Resets fields in modal
         this.props.form.resetFields();
       }
     });
   }
 
+  // function to handle when model is active and background is blurred
   handleConfirmBlur = event => {
     const value = event.target.value;
 
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   }
 
+  // function to reset form
   handleReset = () => this.props.form.resetFields();
 
   render() {
@@ -72,12 +73,11 @@ class AssignmentForm extends Component {
           span: 14,
           offset: 8,
         },
-      },
+      }
     };
 
     return (
       <Form onSubmit={ this.handleSubmit }>
-
         <FormItem
           {...formItemLayout}
           label="School"
@@ -91,7 +91,6 @@ class AssignmentForm extends Component {
           )}
         </FormItem>
 
-
         <FormItem
           {...formItemLayout}
           label="Teacher"
@@ -104,7 +103,6 @@ class AssignmentForm extends Component {
             <Input className={ this.props.inputClass } placeholder="Alper G." />
           )}
         </FormItem>
-
 
         <FormItem
           {...formItemLayout}
@@ -121,7 +119,6 @@ class AssignmentForm extends Component {
           )}
         </FormItem>
 
-
         <FormItem
           {...formItemLayout}
           label="Assignment"
@@ -136,7 +133,6 @@ class AssignmentForm extends Component {
             <Input className={ this.props.inputClass } placeholder="Project 3" />
           )}
         </FormItem>
-
 
         <FormItem
           {...formItemLayout}
