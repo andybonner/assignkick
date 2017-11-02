@@ -28,7 +28,7 @@ class Home extends Component {
           fourthImage="assets/images/3rd.png"
           fifthImage="assets/images/AsKi_screen.png"
           className="cartoons"
-          struggleInfo="We are all too aware of the stuggle. It happens to the best of us." >
+          struggleInfo="We are all too aware of the struggle. It happens to the best of us." >
         </Struggle>
 
         <Solution
