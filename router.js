@@ -73,7 +73,11 @@ module.exports = function (app) {
       });
     });
 
-  apiRoutes.use('*', function (request, response){
+  app.get('*', function (request, response){
     response.sendFile(path.join(__dirname, './client/build/index.html'));
   });
+
+  // apiRoutes.use(function (request, response){
+  //   response.sendFile(path.join(__dirname, './client/build/index.html'));
+  // });
 };
