@@ -63,7 +63,7 @@ module.exports = function (app) {
         subject: `Thanks for creating your ${req.body.title}`,
         text: `Thanks for creating your assignment: ${req.body.title}. 
         
-        our assigment is due on the ${req.body.end}. 
+        Your assigment is due on the ${req.body.end}. 
         
         Make sure you start on it before then!
         
