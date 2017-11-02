@@ -3,7 +3,7 @@ const Assignments = require('../models/assignments');
 
 module.exports = function emailScheduler(req, res){
 
-  // console.log('route received as req.body:', req.body);
+  console.log('emailscheduler received as req.body:', req.body);
   Assignments.create(req.body)
   .then(assignment => {
     
@@ -21,7 +21,7 @@ module.exports = function emailScheduler(req, res){
     scheduleDate.mins = notifyDate.getMinutes();
   
 
-    scheduleEmailCronJob(req.body.email,scheduleDate)
+    scheduleEmailCronJob(req.body.user_email,scheduleDate)
     .then(() => {
       res.json(assignment);
     })

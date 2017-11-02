@@ -39,11 +39,7 @@ module.exports = function (app) {
 
   // NB '/api' portion of route is already being passed in, so this equals '/api/add'
   apiRoutes.route('/add')
-    .post(function (req, res) {
-      console.log('route received as req.body:', req.body);
-      Assignments.create(req.body)
-      .then(dbModel => res.json(dbModel))
-    });
+    .post(emailScheduler(req, res));
 
   apiRoutes.route('/assignments/:id')
     .delete(function (req, res) {
