@@ -37,8 +37,10 @@ export function loginUser({ email, password }) {
     axios.post('/api/auth/login', { email, password })
       .then(response => {
         setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
+        console.log(response);
         dispatch({
-          type: AUTH_USER
+          type: AUTH_USER,
+          user: response.data.user
         });
       })
       .catch((error) => {
@@ -54,7 +56,8 @@ export function registerUser({ email, firstName, lastName, password }) {
       .then(response => {
         setCookie('token', response.data.token, { maxAge: response.tokenExpiration });
         dispatch({
-          type: AUTH_USER
+          type: AUTH_USER,
+          user: response.data.user
         });
       })
       .catch((error) => {

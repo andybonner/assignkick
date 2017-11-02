@@ -26,7 +26,6 @@ function setUserInfo(request) {
 // Login Route
 //========================================
 exports.login = function (req, res, next) {
-
   let userInfo = setUserInfo(req.user);
 
   res.status(200).json({
@@ -79,7 +78,6 @@ exports.register = function (req, res, next) {
       if (err) { return next(err); }
 
       // Respond with JWT if user was created
-
       let userInfo = setUserInfo(user);
 
       res.status(201).json({

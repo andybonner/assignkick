@@ -23,16 +23,6 @@ class Main extends Component {
     this.props.protectedTest();
   }
 
-  renderContent() {
-    if (this.props.content) {
-      return (
-        <div>
-          <div>{this.props.content}</div>
-        </div>
-      );
-    }
-  }
-
   // Initial states default to current date
   state = {
     value: moment(),
@@ -103,7 +93,7 @@ class Main extends Component {
         <SideNavAuth />
 
         <BigCalendar
-          {...this.props}
+          /* {...this.props} */
           events={this.state.calendarFormattedAssignments}
           timeslots={7}
           defaultView={'month'}
@@ -123,7 +113,7 @@ class Main extends Component {
             </h1>
           </div>
 
-        <div className="row" {...this.props}> 
+        <div className="row"> 
           <div className="left-section">
             <Modal
               visible={ assignVisible }

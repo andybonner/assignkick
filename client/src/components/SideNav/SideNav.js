@@ -78,6 +78,7 @@ class SideNav extends Component {
 									title="Register Form"
 									onCancel={ this.handleCancel }
 									footer={null}
+									className='text-center'
 								>
 									<RegForm
 										regClass="formItems"

@@ -55,7 +55,7 @@ module.exports = function (app) {
 
   apiRoutes.route('/user-assignments/:id')
     .get((req, res) => {
-      console.log('api/assignments GET route recieved query:', req.query);
+      // upon login, user will visit this route
       User.findById(req.params.id)
         .populate('assignments')
         .then(dbModel => res.json(dbModel))
@@ -73,7 +73,7 @@ module.exports = function (app) {
       });
     });
 
-    app.get('*', function (request, response){
-      response.sendFile(path.join(__dirname, './client/build/index.html'));
-    });
+  apiRoutes.use(function (request, response){
+    response.sendFile(path.join(__dirname, './client/build/index.html'));
+  });
 };
