@@ -6,6 +6,10 @@ import { registerUser } from '../../../actions';
 // css
 import "./RegForm.css";
 
+// const form = reduxForm({  
+//   form: 'register'
+// });
+
 const FormItem = Form.Item;
 
 class RegistrationForm extends Component {

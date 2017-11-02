@@ -5,6 +5,7 @@ const AuthenticationController = require('./controllers/authentication'),
 const Assignments = require('./models/assignments');
 const User = require('./models/user');
 const path = require('path');
+const emailScheduler = require('./controllers/emailscheduler');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
