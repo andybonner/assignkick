@@ -31,7 +31,7 @@ This application helps students and teachers keep track of study assignments
 
 ## Live Demo
 [![alt text](https://github.com/andybonner/assignkick/blob/master/client/public/assets/images/homepage.png)](http://assignkick.herokuapp.com/)
-> Click on image to view application or ![Click Here](http://assignkick.herokuapp.com/)
+> Click on image to view application or [Click Here](http://assignkick.herokuapp.com/)
 
 
 ## Wireframes
