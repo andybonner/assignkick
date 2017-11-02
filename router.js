@@ -6,6 +6,7 @@ const Assignments = require('./models/assignments');
 const User = require('./models/user');
 const path = require('path');
 const emailScheduler = require('./controllers/emailscheduler');
+const nodemailer = require('nodemailer');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -15,6 +16,14 @@ module.exports = function (app) {
   // Initializing route groups
   const apiRoutes = express.Router();
   const authRoutes = express.Router();
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'assignkick.qwad@gmail.com',
+      pass: 'assignkick'
+    }
+  });
 
   //=========================
   // Auth Routes
@@ -39,7 +48,37 @@ module.exports = function (app) {
 
   // NB '/api' portion of route is already being passed in, so this equals '/api/add'
   apiRoutes.route('/add')
-    .post(emailScheduler);
+    .post(function (req, res) {
+      console.log('route received as req.body:', req.body);
+      // TODO: use emailScheduler
+      Assignments.create(req.body)
+      .then(dbModel => res.json(dbModel))
+
+      User.findById({_id: req.body.user }, function(err, dbUser) {
+        console.log(dbUser);
+      })
+
+      var mailOptions = {
+        from: '"AssignKick" assignkick@gmail.com',
+        to: req.body.email,
+        subject: `Thanks for creating your ${req.body.title}`,
+        text: `Thanks for creating your assignment: ${req.body.title}. 
+        
+        Your assigment is due on the ${req.body.end}. 
+        
+        Make sure you start on it before then!
+        
+        - AssignKick`
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    });
 
   apiRoutes.route('/assignments/:id')
     .delete(function (req, res) {
