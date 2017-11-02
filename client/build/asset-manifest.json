@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.11e16f1a.css",
   "main.css.map": "static/css/main.11e16f1a.css.map",
-  "main.js": "static/js/main.d1b2aa76.js",
-  "main.js.map": "static/js/main.d1b2aa76.js.map",
-  "static/media/dosis.ttf": "static/media/dosis.ba735d67.ttf",
-  "static/media/register.ttf": "static/media/register.3508f353.ttf"
+  "main.js": "static/js/main.dab47b8a.js",
+  "main.js.map": "static/js/main.dab47b8a.js.map",
+  "static\\media\\dosis.ttf": "static/media/dosis.ba735d67.ttf",
+  "static\\media\\register.ttf": "static/media/register.3508f353.ttf"
 }
