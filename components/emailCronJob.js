@@ -1,28 +1,46 @@
 let CronJob = require('cron').CronJob;
 const emailer = require('./emailer');
-var q = require("q");
+const nodemailer = require('nodemailer');
+// const moment = require('moment');
+const q = require("q");
 
-module.exports = function scheduleEmailCronJob(email, scheduleDate) {
-  var deferred = q.defer();
-  var scheduleTime = '00 ' + scheduleDate.mins + ' ' + scheduleDate.hours + ' ' + scheduleDate.day + ' ' + scheduleDate.month + ' *';
+// TODO: reinstate "scheduleDate" as the second parameter
+module.exports = function scheduleEmailCronJob(email) {
+  const deferred = q.defer();
+  // console.log('scheduleDate:', scheduleDate);
+  const scheduleTime = new Date(Date.now());
+  scheduleTime.setMinutes(scheduleTime.getMinutes() + 2);
+  console.log('scheduleTime:', scheduleTime);
 
   try {
-    var job = new CronJob({
+    const job = new CronJob({
       cronTime: scheduleTime,
       onTick: function () {
-        emailer(
-          "Assignment Due",
-          "<h1>Dear " +
-          email +
-          "</h1><p>Your Assignment Is due in two days",
-          email
-        )
-          .then(() => {
-            console.log("Email sent to user :  ", email)
-          })
-          .catch(err => {
-            console.log("Error sending Email \n", err);
-          });
+
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'assignkick.qwad@gmail.com',
+            pass: 'assignkick'
+          }
+        });
+
+        const mailOptions = {
+          from: '"AssignKick" assignkick@gmail.com',
+          to: email,
+          subject: `AssignKick reminder`,
+          text: `This is just a reminder. Your assignment is due on ${scheduleTime}!
+
+            - AssignKick`
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
       },
       start: false,
       timeZone: 'America/New_York'

@@ -50,34 +50,33 @@ module.exports = function (app) {
   apiRoutes.route('/add')
     .post(function (req, res) {
       console.log('route received as req.body:', req.body);
-      // TODO: use emailScheduler
-      Assignments.create(req.body)
-      .then(dbModel => res.json(dbModel))
+      
+      emailScheduler(req, res);
 
-      User.findById({_id: req.body.user }, function(err, dbUser) {
-        console.log(dbUser);
-      })
+      // User.findById({_id: req.body.user }, function(err, dbUser) {
+      //   console.log(dbUser);
+      // })
 
-      var mailOptions = {
-        from: '"AssignKick" assignkick@gmail.com',
-        to: req.body.email,
-        subject: `Thanks for creating your ${req.body.title}`,
-        text: `Thanks for creating your assignment: ${req.body.title}. 
+      // var mailOptions = {
+      //   from: '"AssignKick" assignkick@gmail.com',
+      //   to: req.body.email,
+      //   subject: `Thanks for creating your ${req.body.title}`,
+      //   text: `Thanks for creating your assignment: ${req.body.title}. 
         
-        Your assigment is due on the ${req.body.end}. 
+      //   Your assigment is due on the ${req.body.end}. 
         
-        Make sure you start on it before then!
+      //   Make sure you start on it before then!
         
-        - AssignKick`
-      };
+      //   - AssignKick`
+      // };
 
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+      // transporter.sendMail(mailOptions, function(error, info){
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     console.log('Email sent: ' + info.response);
+      //   }
+      // });
     });
 
   apiRoutes.route('/assignments/:id')
