@@ -1,12 +1,5 @@
-// week before
-// 2 days before
-// day before
-// day of
-
-let CronJob = require('cron').CronJob;
-// const emailer = require('./emailer');
+const CronJob = require('cron').CronJob;
 const nodemailer = require('nodemailer');
-// const moment = require('moment');
 const q = require("q");
 
 function scheduleIndividualAlert(email, firstName, assignTitle, endDate, daysUntil) {

@@ -67,7 +67,7 @@ module.exports = function (app) {
         
         Thanks for letting AssignKick keep track of your assignment: ${req.body.title}. 
         
-        Your assigment is due on the ${req.body.end}. You'll see some reminder emails from us starting a week before then.
+        Your assigment is due on ${req.body.end}. You'll see some reminder emails from us starting a week before then.
         
         Go for it!
         
