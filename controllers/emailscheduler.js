@@ -14,32 +14,15 @@ function makeDateObj(date, advanceDays) {
 }
 
 module.exports = function emailScheduler(req, res) {
-
   console.log('emailscheduler received as req.body:', req.body);
+  const endDate = new Date(req.body.end);
+  scheduleEmailCronJob(req.body.email, req.body.firstName, req.body.title, endDate);
   Assignments.create(req.body)
     .then(assignment => {
-
       if (!assignment) {
         return res.status(404).end();
       }
-      let endDate = new Date(req.body.end);
-      let notifyDate = new Date(new Date().setDate(endDate.getDate() - 2))
-
-      let scheduleDate = {};
-      // TODO: replace the hardcoding that follows with programmatic
-
-      // const now = new Date(Date.now);
-
-      // scheduleEmailCronJob(req.body.email, now);
-
-      scheduleEmailCronJob(req.body.email)
-        .then(() => {
-          res.json(assignment);
-        })
-        .catch(err => {
-          console.log("Error Creating Job \n", err);
-        });
-
+      res.json(assignment);
     })
     .catch(err => res.json(err));
 }

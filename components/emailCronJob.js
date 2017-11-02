@@ -1,16 +1,43 @@
+// week before
+// 2 days before
+// day before
+// day of
+
 let CronJob = require('cron').CronJob;
-const emailer = require('./emailer');
+// const emailer = require('./emailer');
 const nodemailer = require('nodemailer');
 // const moment = require('moment');
 const q = require("q");
 
-// TODO: reinstate "scheduleDate" as the second parameter
-module.exports = function scheduleEmailCronJob(email) {
+function scheduleIndividualAlert(email, firstName, assignTitle, endDate, daysUntil) {
   const deferred = q.defer();
-  // console.log('scheduleDate:', scheduleDate);
-  const scheduleTime = new Date(Date.now());
-  scheduleTime.setMinutes(scheduleTime.getMinutes() + 2);
-  console.log('scheduleTime:', scheduleTime);
+  const now = new Date(Date.now());
+  const scheduleTime = new Date(endDate);
+  scheduleTime.setDate(endDate.getDate() - daysUntil);
+
+  // check: if the assignment due date is sooner than this reminder, abort
+  if (scheduleTime < now) {
+    return;
+  }
+
+  let daysMessage = "";
+  switch (daysUntil) {
+    case 7:
+      daysMessage = "in a week."
+      break;
+    case 2:
+      daysMessage = "in two days."
+      break;
+    case 1:
+      daysMessage = "tomorrow!"
+      break;
+    case 0:
+      daysMessage = "today. Don't forget to turn it in!"
+      break;
+    default:
+      daysMessage = "soon."
+      break;
+  }
 
   try {
     const job = new CronJob({
@@ -29,7 +56,9 @@ module.exports = function scheduleEmailCronJob(email) {
           from: '"AssignKick" assignkick@gmail.com',
           to: email,
           subject: `AssignKick reminder`,
-          text: `This is just a reminder. Your assignment is due on ${scheduleTime}!
+          text: `Hey ${firstName}!
+          Just a reminder: Your assignment "${assignTitle}" is due ${daysMessage}
+          Go for it!
 
             - AssignKick`
         };
@@ -45,6 +74,7 @@ module.exports = function scheduleEmailCronJob(email) {
       start: false,
       timeZone: 'America/New_York'
     });
+    console.log(`Email scheduled for ${firstName} at ${email} on ${scheduleTime} `);
     job.start();
     deferred.resolve();
   } catch (ex) {
@@ -52,4 +82,11 @@ module.exports = function scheduleEmailCronJob(email) {
     deferred.reject(ex);
   }
   return deferred.promise;
+}
+
+module.exports = function scheduleEmailCronJob(email, firstName, assignTitle, endDate) {
+  scheduleIndividualAlert(email, firstName, assignTitle, endDate, 7);
+  scheduleIndividualAlert(email, firstName, assignTitle, endDate, 2);
+  scheduleIndividualAlert(email, firstName, assignTitle, endDate, 1);
+  scheduleIndividualAlert(email, firstName, assignTitle, endDate, 0);
 }

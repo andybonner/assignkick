@@ -51,32 +51,36 @@ module.exports = function (app) {
     .post(function (req, res) {
       console.log('route received as req.body:', req.body);
       
+      // schedule reminder emails
       emailScheduler(req, res);
+      
+      // send confirmation email immediately
+      User.findById({_id: req.body.user }, function(err, dbUser) {
+        console.log(dbUser);
+      })
 
-      // User.findById({_id: req.body.user }, function(err, dbUser) {
-      //   console.log(dbUser);
-      // })
+      var mailOptions = {
+        from: '"AssignKick" assignkick@gmail.com',
+        to: req.body.email,
+        subject: `Thanks for creating your assignment "${req.body.title}"`,
+        text: `Hey ${req.body.firstName}!
+        
+        Thanks for letting AssignKick keep track of your assignment: ${req.body.title}. 
+        
+        Your assigment is due on the ${req.body.end}. You'll see some reminder emails from us starting a week before then.
+        
+        Go for it!
+        
+        - AssignKick`
+      };
 
-      // var mailOptions = {
-      //   from: '"AssignKick" assignkick@gmail.com',
-      //   to: req.body.email,
-      //   subject: `Thanks for creating your ${req.body.title}`,
-      //   text: `Thanks for creating your assignment: ${req.body.title}. 
-        
-      //   Your assigment is due on the ${req.body.end}. 
-        
-      //   Make sure you start on it before then!
-        
-      //   - AssignKick`
-      // };
-
-      // transporter.sendMail(mailOptions, function(error, info){
-      //   if (error) {
-      //     console.log(error);
-      //   } else {
-      //     console.log('Email sent: ' + info.response);
-      //   }
-      // });
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     });
 
   apiRoutes.route('/assignments/:id')
