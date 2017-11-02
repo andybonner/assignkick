@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { Form, Icon, Input, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
+import { loginUser } from '../../../actions';
 
-// Import CSS
+// css
 import "./LoginForm.css";
 
 const FormItem = Form.Item;
 
-// Registration Form Class
 class CustomLoginForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.loginUser(values);
       }
     });
 
@@ -24,6 +24,16 @@ class CustomLoginForm extends Component {
 
   handleReset = () => this.props.form.resetFields();
   
+  renderAlert() {
+    if(this.props.errorMessage) {
+      return (
+        <div>
+          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+        </div>
+      );
+    }
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form;
 
@@ -72,10 +82,6 @@ class CustomLoginForm extends Component {
           <Button style={{ marginLeft: 8 }} onClick={ this.handleReset }>
               Clear
           </Button>
-          
-          <br />
-
-          Or <Link to="/#submit">register now!</Link>
         </FormItem>
       </Form>
     );
@@ -85,4 +91,11 @@ class CustomLoginForm extends Component {
 // Create LoginForm component
 const LoginForm = Form.create()(CustomLoginForm);
 
-export default LoginForm;
+function mapStateToProps(state) {
+  return {
+    errorMessage: state.auth.error,
+    message: state.auth.message
+  };
+}
+
+export default connect(mapStateToProps, { loginUser })(LoginForm);

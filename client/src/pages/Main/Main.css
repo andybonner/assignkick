@@ -1,7 +1,8 @@
-.mainContainer {
+.mainCalendar {
   margin-left: 120px;
   margin-right: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 30px;
 }
 
 footer {
@@ -16,16 +17,42 @@ footer {
 }
 
 .left-section {
-  margin-left: 120px;
-  margin-right: 100px;
-  border: 2px;
+  margin-left: 110px;
+  margin-right: 80px;
   border-color: black;
-  width: 45%;
-  height: 350px;
+  width: 100%;
+  min-height: 250px;
+  max-height: 370px;
+  margin-bottom: 50px;
   overflow: scroll;
-  margin-bottom: 30px;
+}
+
+.table-cell {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.table-header-main {
+  margin-left: 110px;
+  margin-right: 80px;
+}
+
+.table-section {
+  overflow: scroll;
+  margin-top: 20px;
 }
 
 .course-title {
-	position: initial;
+  position: initial;
+  font-size: 40px;
+}
+
+.add-button {
+  width: 150px;
+  float: right;
+}
+
+.rbc-toolbar-label {
+  font-size: 30px !important;
+  margin-bottom: 5px;
 }

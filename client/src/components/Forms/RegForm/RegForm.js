@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
-import { Link } from "react-router-dom";
+import { Form, Input, Button } from 'antd';
+import { connect } from 'react-redux';
+// import { reduxForm } from 'redux-form';
+import { registerUser } from '../../../actions';
 
-// Import CSS
+// css
 import "./RegForm.css";
+
+// const form = reduxForm({  
+//   form: 'register'
+// });
 
 const FormItem = Form.Item;
 
-// Registration Form Class
 class RegistrationForm extends Component {
   state = {
     confirmDirty: false,
@@ -19,9 +24,9 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
         console.log('Received values of form: ', values);
-
-        // ENTER CODE TO SEND TO DB WITH USER INFORMATION
-
+        this.props.registerUser(values);
+        
+        // Resets fields in modal
         this.props.form.resetFields();
       }
     });
@@ -55,6 +60,16 @@ class RegistrationForm extends Component {
   }
 
   handleReset = () => this.props.form.resetFields();
+  
+  renderAlert() {
+    if(this.props.errorMessage) {
+      return (
+        <div>
+          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+        </div>
+      );
+    }
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -116,27 +131,6 @@ class RegistrationForm extends Component {
           )}
         </FormItem>
 
-        {/* Nickname */}
-        <FormItem
-          {...formItemLayout}
-          label={(
-            <span>
-              Nickname&nbsp;
-              <Tooltip title="What do you want other to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          )}
-          hasFeedback
-          className={ this.props.regClass }
-        >
-          {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-          })(
-            <Input className={ this.props.inputClass } placeholder="Johnny" />
-          )}
-        </FormItem>
-
         {/* Email */}
         <FormItem
           {...formItemLayout}
@@ -191,19 +185,6 @@ class RegistrationForm extends Component {
           )}
         </FormItem>
 
-        {/* Terms of Agreement */}
-        <FormItem 
-          {...tailFormItemLayout} 
-          style={{ marginBottom: 8 }}
-          className={ this.props.regClass }
-        >
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <Link to="/">agreement</Link></Checkbox>
-          )}
-        </FormItem>
-
         {/* Register */}
         <FormItem 
           {...tailFormItemLayout}
@@ -223,4 +204,11 @@ class RegistrationForm extends Component {
 // Create RegForm component
 const RegForm = Form.create()(RegistrationForm);
 
-export default RegForm;
+function mapStateToProps(state) {  
+  return {
+    errorMessage: state.auth.error,
+    message: state.auth.message
+  };
+}
+
+export default connect(mapStateToProps, { registerUser })(RegForm);

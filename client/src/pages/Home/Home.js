@@ -1,25 +1,21 @@
-// Dependencies
 import React, { Component } from "react";
 import FullImage from "../../components/FullImage";
 import SideNav from "../../components/SideNav";
-import Footer from "../../components/Footer";
 import Struggle from "../../components/Struggle";
 import Solution from "../../components/Solution";
 
-// Import CSS
+// css
 import "./Home.css";
 
-// Home component
 class Home extends Component {
   render() {
     return(
       <section className="home-container">
         <FullImage 
-          backgroundImage="assets/images/homeHeader.jpeg"
+          backgroundImage="assets/images/education.gif"
           captionHeader="AssignKick"
           captionCatch="Are you a student? Having a hard time managing your class assignments."
-          captionText="We, at AssignKick, know your struggle. That's why we developed an open source Assignment Management Application great for getting you more organized."
-        >
+          captionText="We, at AssignKick, know your struggle. That's why we developed an open source Assignment Management Application great for getting you more organized." >
           <SideNav />
         </FullImage>
 
@@ -32,19 +28,15 @@ class Home extends Component {
           fourthImage="assets/images/3rd.png"
           fifthImage="assets/images/AsKi_screen.png"
           className="cartoons"
-          struggleInfo="We are all too aware of the stuggle. It happens to the best of us."
-        >
+          struggleInfo="We are all too aware of the stuggle. It happens to the best of us." >
         </Struggle>
 
         <Solution
-          imageOne="assets/images/homeHeader.jpeg"
-          imageTwo="assets/images/homeHeader.jpeg"
+          imageOne="assets/images/homepage.png"
+          imageTwo="assets/images/application.png"
           header="The Solution:"
           imageOneDesc="App Screenshot 1"
-          imageTwoDesc="App Screenshot 2"
-        />
-        
-        <Footer />
+          imageTwoDesc="App Screenshot 2" />
       </section>
     )}
 }
