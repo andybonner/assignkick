@@ -21,6 +21,7 @@ class AssignmentForm extends Component {
       if (!error) {
         // stores user id within values object
         values.user = this.props.user._id;
+        values.email = this.props.user.email;
 
         // creates assignments for user
         axios.post('/api/add', values)

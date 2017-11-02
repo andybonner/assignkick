@@ -5,6 +5,7 @@ const AuthenticationController = require('./controllers/authentication'),
 const Assignments = require('./models/assignments');
 const User = require('./models/user');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
@@ -14,6 +15,14 @@ module.exports = function (app) {
   // Initializing route groups
   const apiRoutes = express.Router();
   const authRoutes = express.Router();
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'assignkick.qwad@gmail.com',
+      pass: 'assignkick'
+    }
+  });
 
   //=========================
   // Auth Routes
@@ -40,8 +49,34 @@ module.exports = function (app) {
   apiRoutes.route('/add')
     .post(function (req, res) {
       console.log('route received as req.body:', req.body);
+
       Assignments.create(req.body)
       .then(dbModel => res.json(dbModel))
+
+      User.findById({_id: req.body.user }, function(err, dbUser) {
+        console.log(dbUser);
+      })
+
+      var mailOptions = {
+        from: '"AssignKick" assignkick@gmail.com',
+        to: req.body.email,
+        subject: `Thanks for creating your ${req.body.title}`,
+        text: `Thanks for creating your assignment: ${req.body.title}. 
+        
+        our assigment is due on the ${req.body.end}. 
+        
+        Make sure you start on it before then!
+        
+        - AssignKick`
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     });
 
   apiRoutes.route('/assignments/:id')
@@ -76,8 +111,4 @@ module.exports = function (app) {
   app.get('*', function (request, response){
     response.sendFile(path.join(__dirname, './client/build/index.html'));
   });
-
-  // apiRoutes.use(function (request, response){
-  //   response.sendFile(path.join(__dirname, './client/build/index.html'));
-  // });
 };
