@@ -4,13 +4,13 @@
 var nodemailer = require('nodemailer');
 var q = require("q");
 var SMTPSetup = {
-    sender : "AssignKick",
-    email : "undeleap@gmail.com",
-    password : "uneleap123+"
-  };
+  sender: "AssignKick",
+  email: "undeleap@gmail.com",
+  password: "uneleap123+"
+};
 
 
-  module.exports = function sendEmailController(subject, message, To, cc, bcc){
+module.exports = function sendEmailController(subject, message, To, cc, bcc) {
   var deferred = q.defer();
   var fromAddress = SMTPSetup.sender + "<" + SMTPSetup.email + ">";
   var transport = null;
@@ -26,7 +26,7 @@ var SMTPSetup = {
   transport = nodemailer.createTransport(SMPTConfigObj);
 
   console.log('Sending Mail from Emailer!');
-  if(Array.isArray(To)){
+  if (Array.isArray(To)) {
     To = To.join("; ");
   }
   var message = {
@@ -37,30 +37,30 @@ var SMTPSetup = {
     // Subject of the message
     subject: subject,
     // HTML body
-    html : message
+    html: message
 
   };
 
-  if(cc){
-    if(Array.isArray(cc)){
+  if (cc) {
+    if (Array.isArray(cc)) {
       cc = cc.join(";");
     }
     message.cc = cc;
   }
-  if(bcc){
-    if(Array.isArray(bcc)){
+  if (bcc) {
+    if (Array.isArray(bcc)) {
       bcc = bcc.join(";");
     }
     message.bcc = bcc;
   }
 
-  transport.sendMail(message, function(error, response){
-    if(error){
+  transport.sendMail(message, function (error, response) {
+    if (error) {
       console.log("email error");
       console.log(error);
       deferred.reject(error);
     }
-    else{
+    else {
       console.log('Message sent successfully!');
       deferred.resolve(response);
     }
