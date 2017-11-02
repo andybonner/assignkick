@@ -19,8 +19,9 @@ class AssignmentForm extends Component {
 
     this.props.form.validateFieldsAndScroll((error, values) => {
       if (!error) {
-        // stores user id within values object
+        // stores user id and email within values object
         values.user = this.props.user._id;
+        values.user_email = this.props.user.email;
 
         // creates assignments for user
         axios.post('/api/add', values)
