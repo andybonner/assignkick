@@ -39,7 +39,7 @@ module.exports = function (app) {
 
   // NB '/api' portion of route is already being passed in, so this equals '/api/add'
   apiRoutes.route('/add')
-    .post(emailScheduler(req, res));
+    .post(emailScheduler);
 
   apiRoutes.route('/assignments/:id')
     .delete(function (req, res) {
@@ -73,8 +73,4 @@ module.exports = function (app) {
   app.get('*', function (request, response){
     response.sendFile(path.join(__dirname, './client/build/index.html'));
   });
-
-  // apiRoutes.use(function (request, response){
-  //   response.sendFile(path.join(__dirname, './client/build/index.html'));
-  // });
 };

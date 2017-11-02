@@ -19,9 +19,12 @@ module.exports = function emailScheduler(req, res){
     
     scheduleDate.hours = notifyDate.getHours();
     scheduleDate.mins = notifyDate.getMinutes();
-  
 
-    scheduleEmailCronJob(req.body.user_email,scheduleDate)
+    const now = new Date(Date.now);
+  
+    scheduleEmailCronJob(req.body.user_email, now);
+    
+    scheduleEmailCronJob(req.body.user_email, scheduleDate)
     .then(() => {
       res.json(assignment);
     })
